@@ -1,6 +1,5 @@
 #include "core.h"
 #include <qdebug.h>
-#include <X11/Xlib.h>
 
 core::core ( int &argc, char *argv[] ) :
     QApplication ( argc, argv )
