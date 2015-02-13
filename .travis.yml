@@ -3,6 +3,8 @@ compiler:
   - gcc
 
 before_install:
+- wget https://github.com/npotts/Qt5-Travis-CI/raw/master/Qt5.txz
+- tar xfp Qt5.txz -C ${HOME}
 - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty universe"
 - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main"
 - sudo apt-get install debian-keyring debian-archive-keyring
