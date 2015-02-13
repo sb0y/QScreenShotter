@@ -9,7 +9,6 @@
 #include <QPoint>
 #include <QBrush>
 #include <QMouseEvent>
-#include <QSurface>
 #include <QGuiApplication>
 #include <QX11Info>
 #include <xcb/xcb.h>
