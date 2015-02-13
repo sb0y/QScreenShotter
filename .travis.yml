@@ -2,29 +2,11 @@ language: cpp
 compiler:
   - gcc
 
-before_install:
-- wget https://github.com/npotts/Qt5-Travis-CI/raw/master/Qt5.txz
-- tar xfp Qt5.txz -C ${HOME}
-- sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty universe"
-- sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main"
-- sudo apt-get install debian-keyring debian-archive-keyring
-- sudo apt-key update
-- sudo apt-get update
-- sudo apt-get install qt5-default qt5-qmake qtbase5-dev-tools qtchooser qttools5-dev qtbase5-dev libgles2-mesa-dev libqt5gui5 libqt5serialport5-dev libqt5printsupport5 libqt5widgets5 libgles2-mesa libgl1-mesa-dev libgl1-mesa-glx libglapi-mesa libegl1-mesa-dev libpango-1.0-0
-- sudo apt-get install zlib1g-dev libudev-dev
-
 install:
-  - sudo apt-get update -q
-  - sudo apt-get install build-essential
+  - sudo apt-get update
+  - sudo apt-get install libqt5-dev qt5-qmake
 
 script:
-  - export PATH="${HOME}/Qt5.3.2/bin:${PATH}"
-  - which qmake
-  - uname -a
-  - qmake --version
-  - pwd
-  - ls *
-  - ls -alh ${HOME}/Qt5.3.2/*
-  - ../../Qt5.3.2/bin/qmake
-  - vendor/../../Qt5.3.2/bin/qmake
-  - make -j$(nproc)
+  - qmake -project
+  - qmake qsc.pro
+  - make
