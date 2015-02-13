@@ -10,7 +10,6 @@
 #include <QBrush>
 #include <QMouseEvent>
 #include <QGuiApplication>
-#include <QX11Info>
 #include <xcb/xcb.h>
 #include <QPaintEvent>
 #include <QGraphicsScene>

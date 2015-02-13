@@ -2,7 +2,6 @@
 #define XWINDOWRECTANGLE_H
 
 #include <QObject>
-#include <QX11Info>
 #include <QDebug>
 #include <xcb/xcb.h>
 

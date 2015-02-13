@@ -19,9 +19,9 @@
 #include "xwindowrectangle.h"
 #include "screenshot.h"
 #include <X11/Xutil.h>
-#include <QX11Info>
 #include <QTimer>
 #include "neweventfilter.h"
+#include "x11info.h"
 #define getWindow(winID,cast_type)({static_cast<cast_type>(system::getCore()->windows[winID]);})
 
 class core : public QApplication

@@ -12,7 +12,8 @@ SOURCES += src/main.cpp\
     src/neweventfilter.cpp \
     src/rectanglegrabber.cpp \
     src/rubberband.cpp \
-    src/customframe.cpp
+    src/customframe.cpp \
+    src/x11info.cpp
 
 HEADERS  += src/mainwindow.h \
     src/core.h \
@@ -27,7 +28,8 @@ HEADERS  += src/mainwindow.h \
     src/neweventfilter.h \
     src/rectanglegrabber.h \
     src/rubberband.h \
-    src/customframe.h
+    src/customframe.h \
+    src/x11info.h
 
 FORMS    += src/mainwindow.ui \
     src/aboutdialog.ui
