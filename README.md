@@ -1,6 +1,6 @@
 # QScreenShotter
 
-QScreenShotter is a program that helps you to comfortable make any screenshot.
+The program QScreenShotter will help you to make comfortably an any screenshot on your PC.
 
 Сompiles only for Linux. Windows will be soon.
 
