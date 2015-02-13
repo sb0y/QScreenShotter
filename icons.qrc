@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/tray">
-        <file>images/tray.png</file>
+        <file>images/tray16x16.png</file>
+        <file>images/tray32x32.png</file>
+        <file>images/tray128x128.png</file>
+        <file>images/tray64x64.png</file>
     </qresource>
 </RCC>

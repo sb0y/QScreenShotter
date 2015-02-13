@@ -10,7 +10,7 @@ core::core ( int &argc, char *argv[] ) :
     setApplicationVersion ( QObject::tr ( "0.1b" ) );
     setOrganizationName ( QObject::tr ( "andrey@bagrintsev.me" ) );
     setOrganizationDomain ( QObject::tr ( "bagrintsev.me" ) );
-    setWindowIcon ( QIcon ( ":/tray/images/tray.png" ) );
+    setWindowIcon ( QIcon ( ":/tray/images/tray32x32.png" ) );
 
     setAttribute ( Qt::AA_NativeWindows, true );
     //setAttribute ( Qt::AA_X11InitThreads, true );
@@ -72,7 +72,7 @@ void core::initTray()
     actionMenu->addAction ( window );
     actionMenu->addAction ( rect );
 
-    trayIcon->setIcon ( QIcon ( ":/tray/images/tray.png" ) );
+    trayIcon->setIcon ( QIcon ( ":/tray/images/tray32x32.png" ) );
     trayIcon->show();
 
     hideAction = new QAction ( QObject::tr ( "&Hide" ), trayIcon );
