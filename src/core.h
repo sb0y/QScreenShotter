@@ -16,9 +16,8 @@
 #include <QSignalMapper>
 #include "aboutdialog.h"
 #include <QString>
-#include "xwindowrectangle.h"
+//#include "xwindowrectangle.h"
 #include "screenshot.h"
-#include <X11/Xutil.h>
 #include <QTimer>
 #include "neweventfilter.h"
 #include "x11info.h"
@@ -52,7 +51,7 @@ public:
 
     QPixmap picture;
 
-    XWindowRectangle rect;
+    //XWindowRectangle rect;
 
 private:
     void initTray();
