@@ -2,8 +2,6 @@
 #include <unistd.h>
 #include <xcb/xcb.h>
 #include <X11/Xlib.h>
-#include <QPainter>
-
 
 XWindowRectangle::XWindowRectangle(QObject *parent) :
     QObject(parent)
