@@ -1,4 +1,4 @@
-# QScreenShotter
+# QScreenShotter [![Build Status](https://travis-ci.org/sb0y/QScreenShotter.svg?branch=master)](https://travis-ci.org/sb0y/QScreenShotter)
 
 ![ScreenShot](https://myapps.developer.ubuntu.com/site_media/appmedia/2015/02/QScreenShotter_004.png)
 
