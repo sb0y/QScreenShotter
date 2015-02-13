@@ -147,14 +147,14 @@
         <item>
          <widget class="menuButton" name="buttonExport">
           <property name="text">
-           <string>Export</string>
+           <string>&amp;Export</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="buttonExit">
           <property name="text">
-           <string>Exit</string>
+           <string>&amp;Hide</string>
           </property>
          </widget>
         </item>

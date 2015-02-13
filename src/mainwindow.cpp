@@ -20,7 +20,7 @@ MainWindow::MainWindow ( QWidget *parent ) :
     QObject::connect ( ui->shootMode, SIGNAL ( currentIndexChanged(int) ), this, SLOT ( setMainAction() ) );
     QObject::connect ( ui->shootButton, SIGNAL ( clicked() ), c, SLOT ( mainAction() ) );
 
-    QObject::connect ( ui->buttonExit, SIGNAL ( clicked() ), qApp, SLOT ( quit() ) );
+    QObject::connect ( ui->buttonExit, SIGNAL ( clicked() ), c, SLOT ( toggleVisability() ) );
     QObject::connect ( ui->actionExit, SIGNAL ( triggered(bool) ), qApp, SLOT ( quit() ) );
     QObject::connect ( ui->actionAbout, SIGNAL ( triggered(bool) ), c, SLOT ( showAbout() ) );
 
