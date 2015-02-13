@@ -6,7 +6,8 @@ before_install:
  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
  - sudo apt-add-repository 'deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse restricted'
  - sudo apt-get update -qq
- - sudo apt-get install qt5-default qttools5-dev-tools qtbase5-dev libqt5x11extras5-dev
+ - sudo apt-get install qt5-default qttools5-dev-tools qtbase5-dev libqt5x11extras5-dev libqt5opengl5-dev libqt5designer
+ - sudo apt-get install libqt5designercomponents5 libqt5gui5 libqt5gui5-gles libqt5help5 libqt5printsupport5 libqt5widgets5
 
 script:
   - qmake -project
