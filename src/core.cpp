@@ -18,7 +18,6 @@ core::core ( int &argc, char *argv[] ) :
     isVisible = true;
     installNativeEventFilter ( new NewEventFilter );
     sc = NULL;
-    screen = qApp->primaryScreen()->geometry();
 }
 
 core::~core()
@@ -52,6 +51,8 @@ int core::exec()
     sc->shootDesktop ( true );
 
     mw->show();
+
+    screen = qApp->primaryScreen()->geometry();
 
     return QApplication::exec();
 }

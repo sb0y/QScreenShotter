@@ -8,9 +8,9 @@ rubberBand::rubberBand(QWidget *parent) :
     setWindowFlags ( Qt::SubWindow );
     _rubberBand = new QRubberBand ( QRubberBand::Rectangle, this );
     QPalette p ( parent->palette() );
-    QColor color ( Qt::transparent );
-    color.setAlpha ( 100 );
-    p.setBrush ( QPalette::Highlight, QBrush ( color ) );
+   // QColor color ( Qt::transparent );
+    //color.setAlpha ( 100 );
+   //p.setBrush ( QPalette::Highlight, QBrush ( color ) );
     _rubberBand->setPalette ( p );
     _rubberBand->setStyleSheet ( "border: 1px solid black;" );
 
@@ -39,10 +39,10 @@ rubberBand::~rubberBand()
 
 void rubberBand::resizeEvent ( QResizeEvent *e )
 {
-    _rubberBand->resize ( size() );
-
     pixmap = static_cast < rectangleGrabber* > ( parent() )->pixmap.copy ( x(), y(), width(), height() );
     label->setPixmap ( pixmap );
+
+    _rubberBand->resize ( size() );
 
     e->accept();
 }

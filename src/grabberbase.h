@@ -5,11 +5,15 @@
 #include <QTimer>
 #include <QTimerEvent>
 #include <qdebug.h>
+#include <QRect>
+#include <QScreen>
+#include <QApplication>
 
 class grabberBase : public QDialog
 {
     Q_OBJECT
 public:
+
     explicit grabberBase();
     virtual ~grabberBase();
     virtual void done() = 0;

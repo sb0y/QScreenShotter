@@ -7,7 +7,7 @@ rectangleGrabber::rectangleGrabber()
 
     setMouseTracking ( true );
     setWindowModality( Qt::WindowModal );
-    setFixedSize ( system::getCore()->screen.size().width(), system::getCore()->screen.size().height() );
+    setFixedSize ( screen.size().width(), screen.size().height() );
     layout = new QHBoxLayout ( this );
 
     setLayout ( layout );
@@ -26,9 +26,9 @@ void rectangleGrabber::drawScreen ( bool banner )
     QPainter p ( &pm );
     QBrush b ( QColor ( 0,0,0,128 ) ); // adjust color and alpha to taste
     p.setBrush ( b );
-    p.drawRect ( 0, 0, system::getCore()->screen.size().width(), system::getCore()->screen.size().height() );
+    p.drawRect ( 0, 0, screen.size().width(), screen.size().height() );
 
-    QRect textBox = system::getCore()->screen;
+    QRect textBox = screen;
     textBox.setLeft ( 190 );
     textBox.setRight ( textBox.right() - 190 );
     textBox.setTop ( 20 );
@@ -71,7 +71,7 @@ void rectangleGrabber::start()
 void rectangleGrabber::prepare()
 {
     pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
-    //screen = system::getCore()->screen;
+    screen = qApp->primaryScreen()->geometry();
     drawScreen();
 
     exec();
