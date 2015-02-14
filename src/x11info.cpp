@@ -1,14 +1,13 @@
 #include "x11info.h"
 #include <qdebug.h>
-#include <qpa/qplatformnativeinterface.h>
-#include <qpa/qplatformwindow.h>
+//#include <qpa/qplatformnativeinterface.h>
+//#include <qpa/qplatformwindow.h>
 #include <qscreen.h>
 #include <qwindow.h>
 #include <qguiapplication.h>
 #include <xcb/xcb.h>
 
-QT_BEGIN_NAMESPACE
-
+//QT_BEGIN_NAMESPACE
 
 /*!
     \class QX11Info
@@ -28,7 +27,7 @@ QT_BEGIN_NAMESPACE
 /*!
     Constructs an empty QX11Info object.
 */
-X11Info::X11Info()
+/*X11Info::X11Info()
 {
 }
 
@@ -58,4 +57,4 @@ unsigned long X11Info::appRootWindow()
     return static_cast < xcb_window_t > ( reinterpret_cast < quintptr > ( native->nativeResourceForIntegration ( QByteArrayLiteral ( "rootwindow" ) ) ) );
 }
 
-QT_END_NAMESPACE
+QT_END_NAMESPACE*/
