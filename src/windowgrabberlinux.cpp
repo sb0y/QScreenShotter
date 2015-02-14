@@ -8,8 +8,9 @@
 #include <X11/extensions/Xfixes.h>
 #include <X11/extensions/shape.h>
 #include <QDesktopWidget>
-#include "customframe.h"
-#include "x11info.h"
+//#include "customframe.h"
+//include "X11Info.h"
+#include <QX11Info>
 
 windowGrabberLinux::windowGrabberLinux()
 {
@@ -45,8 +46,8 @@ windowGrabberLinux::windowGrabberLinux()
     //setStyleSheet ( "background:transparent;" );
     /* create window */
 
-   /* Display *d = X11Info::display();
-    int s = X11Info::appScreen();
+   /* Display *d = QX11Info::display();
+    int s = QX11Info::appScreen();
 
     Window w = XCreateSimpleWindow(
                 d,
@@ -153,8 +154,8 @@ void windowGrabberLinux::keyPressEvent ( QKeyEvent *e )
     {
         case Qt::Key_Escape:
 
-            e->accept();
             done();
+            e->accept();
 
         break;
 
@@ -180,13 +181,13 @@ Window findRealWindow ( Window w, int depth = 0 )
         return None;
     }
 
-    static Atom wm_state = XInternAtom ( X11Info::display(), "WM_STATE", False );
+    static Atom wm_state = XInternAtom ( QX11Info::display(), "WM_STATE", False );
     Atom type;
     int format;
     unsigned long nitems, after;
     unsigned char* prop;
 
-    if ( XGetWindowProperty ( X11Info::display(), w, wm_state, 0, 0, False, AnyPropertyType,
+    if ( XGetWindowProperty ( QX11Info::display(), w, wm_state, 0, 0, False, AnyPropertyType,
                                &type, &format, &nitems, &after, &prop ) == Success )
     {
         if ( prop != NULL )
@@ -205,7 +206,7 @@ Window findRealWindow ( Window w, int depth = 0 )
     unsigned int nchildren;
     Window ret = None;
 
-    if ( XQueryTree ( X11Info::display(), w, &root, &parent, &children, &nchildren ) != 0 )
+    if ( XQueryTree ( QX11Info::display(), w, &root, &parent, &children, &nchildren ) != 0 )
     {
         for ( unsigned int i = 0;
             i < nchildren && ret == None;
@@ -263,16 +264,15 @@ void windowGrabberLinux::start()
                          0,
                          XCB_NONE );
 
-    XserverRegion region = XFixesCreateRegion ( X11Info::display(), NULL, 0 );
-    XFixesSetWindowShapeRegion ( X11Info::display(), win, ShapeBounding, 0, 0, 0 );
-    XFixesSetWindowShapeRegion ( X11Info::display(), win, ShapeInput, 0, 0, region );
-    XFixesDestroyRegion ( X11Info::display(), region );
+    XserverRegion region = XFixesCreateRegion ( QX11Info::display(), NULL, 0 );
+    XFixesSetWindowShapeRegion ( QX11Info::display(), win, ShapeBounding, 0, 0, 0 );
+    XFixesSetWindowShapeRegion ( QX11Info::display(), win, ShapeInput, 0, 0, region );
+    XFixesDestroyRegion ( QX11Info::display(), region );
 
     xcb_map_window ( c, win );
     xcb_flush ( c );*/
 
     //qDebug() << win;
-
 }
 
 void windowGrabberLinux::prepare()
@@ -282,11 +282,11 @@ void windowGrabberLinux::prepare()
     label->setPixmap ( pixmap );
     splashWnd->show();
 
-    XserverRegion region = XFixesCreateRegion ( X11Info::display(), NULL, 0 );
+    XserverRegion region = XFixesCreateRegion ( QX11Info::display(), NULL, 0 );
 
-    XFixesSetWindowShapeRegion ( X11Info::display(), splashWnd->effectiveWinId(), ShapeBounding, 0, 0, 0 );
-    XFixesSetWindowShapeRegion ( X11Info::display(), splashWnd->effectiveWinId(), ShapeInput, 0, 0, region );
-    XFixesDestroyRegion ( X11Info::display(), region );
+    XFixesSetWindowShapeRegion ( QX11Info::display(), splashWnd->effectiveWinId(), ShapeBounding, 0, 0, 0 );
+    XFixesSetWindowShapeRegion ( QX11Info::display(), splashWnd->effectiveWinId(), ShapeInput, 0, 0, region );
+    XFixesDestroyRegion ( QX11Info::display(), region );
 
     QApplication::setOverrideCursor ( QCursor ( Qt::CrossCursor ) );
     //system::getCore()->rect.draw();
@@ -302,22 +302,22 @@ void windowGrabberLinux::windowUnderCursor()
     uint w, h;
     int x, y;
 
-    Display *ds = X11Info::display();
+    Display *ds = QX11Info::display();
 
     XGrabServer ( ds );
 
-    XQueryPointer ( ds, X11Info::appRootWindow(), &root, &child, &rootX, &rootY, &winX, &winY, &mask );
+    XQueryPointer ( ds, QX11Info::appRootWindow(), &root, &child, &rootX, &rootY, &winX, &winY, &mask );
 
     if ( child == None )
     {
-        child = X11Info::appRootWindow();
+        child = QX11Info::appRootWindow();
     }
 
     //child = findRealWindow ( child );
 
     XGetGeometry ( ds, child, &root, &x, &y, &w, &h, &border, &depth );
 
-   // XTranslateCoordinates ( ds, child, X11Info::appRootWindow(),  );
+   // XTranslateCoordinates ( ds, child, QX11Info::appRootWindow(),  );
 
     XUngrabServer ( ds );
 
@@ -372,13 +372,13 @@ void windowGrabberLinux::mouseTick()
     uint w, h;
     int x, y;
 
-    Display *ds = X11Info::display();
+    Display *ds = QX11Info::display();
 
-    XQueryPointer ( ds, X11Info::appRootWindow(), &root, &child, &rootX, &rootY, &winX, &winY, &mask );
+    XQueryPointer ( ds, QX11Info::appRootWindow(), &root, &child, &rootX, &rootY, &winX, &winY, &mask );
 
     if ( child == None )
     {
-        //return;
+        return;
     }
 
     //QPoint p = mapFromGlobal ( QCursor::pos() );
@@ -386,7 +386,6 @@ void windowGrabberLinux::mouseTick()
     XGetGeometry ( ds, child, &root, &x, &y, &w, &h, &border, &depth );
 
     drawOnLayer ( x, y, w, h );
-
 }
 
 void windowGrabberLinux::drawOnLayer ( int x, int y, int w, int h )

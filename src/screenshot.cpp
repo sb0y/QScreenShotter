@@ -4,13 +4,13 @@
 screenshot::screenshot ( core *c )
 {
     main = c;
-    wgl = NULL, dgl = NULL, rg = NULL;
+    wg = NULL, dg = NULL, rg = NULL;
 }
 
 screenshot::~screenshot()
 {
-    delete wgl;
-    delete dgl;
+    delete wg;
+    delete dg;
     delete rg;
 }
 
@@ -22,25 +22,31 @@ int screenshot::init()
 
 int screenshot::shootWindow()
 {
-    if ( NULL == wgl )
-        wgl = new windowGrabberLinux;
+    if ( NULL == wg )
+    #ifdef HAVE_X11
+        wg = new windowGrabberLinux;
+    #endif
 
-    QTimer::singleShot ( 400, wgl, SLOT ( start() ) );
+    if ( NULL != wg )
+        QTimer::singleShot ( 400, wg, SLOT ( start() ) );
 
     return 1;
 }
 
 int screenshot::shootDesktop ( bool now )
 {
-    if ( NULL == dgl )
-        dgl = new desktopGrabberLinux;
+    if ( NULL == dg )
+    #ifdef HAVE_X11
+        dg = new desktopGrabberLinux;
+    #endif
 
-    if ( now )
-    {
-        dgl->start();
-    } else {
-        QTimer::singleShot ( 400, dgl, SLOT ( start() ) );
-    }
+    if ( NULL != dg )
+        if ( now )
+        {
+            dg->start();
+        } else {
+            QTimer::singleShot ( 400, dg, SLOT ( start() ) );
+        }
 
     return 1;
 }
@@ -48,9 +54,12 @@ int screenshot::shootDesktop ( bool now )
 int screenshot::shootRectangle()
 {
     if ( NULL == rg )
+    #ifdef HAVE_X11
         rg = new rectangleGrabber;
+    #endif
 
-    QTimer::singleShot ( 400, rg, SLOT ( start() ) );
+    if ( NULL != rg )
+        QTimer::singleShot ( 400, rg, SLOT ( start() ) );
 
     return 1;
 }

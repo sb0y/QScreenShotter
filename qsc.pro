@@ -4,9 +4,13 @@
 #
 #-------------------------------------------------
 
+unix:!mac:DEFINES += HAVE_X11
+
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+DEFINES += QT_NO_USING_NAMESPACE
+
+greaterThan ( QT_MAJOR_VERSION, 4 ) : QT += widgets x11extras
 
 TARGET = qsc
 TEMPLATE = app
