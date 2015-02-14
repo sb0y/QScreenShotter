@@ -44,7 +44,7 @@ void rectangleGrabber::drawScreen ( bool banner )
         subHeader.setTextFormat ( Qt::RichText );
         subHeader.setTextWidth ( textBox.width() - 10 );
 
-        p.setFont ( QFont ( "Arial" ) );
+        p.setFont ( QFont ( "Tahoma" ) );
 
         p.drawRoundedRect ( textBox, 6.0, 6.0 );
         p.setPen ( 0xCECECE );

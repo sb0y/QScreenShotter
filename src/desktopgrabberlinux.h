@@ -1,12 +1,12 @@
 #ifndef DESKTOPGRABBER_LINUX_H
 #define DESKTOPGRABBER_LINUX_H
 
-//#include "grabberbase.h"
+#include "grabberbase.h"
 #include <QMouseEvent>
 
 class core;
 
-class desktopGrabberLinux : public QObject// : public grabberBase
+class desktopGrabberLinux : public grabberBase
 {
     Q_OBJECT
 private:

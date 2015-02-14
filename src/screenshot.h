@@ -22,9 +22,9 @@ public:
     int shootRectangle();
 
 private:
-    windowGrabberLinux *wg;
-    desktopGrabberLinux *dg;
-    rectangleGrabber *rg;
+    grabberBase *wg;
+    grabberBase *dg;
+    grabberBase *rg;
 
 signals:
 
