@@ -41,12 +41,14 @@ int screenshot::shootDesktop ( bool now )
     #endif
 
     if ( NULL != dg )
+    {
         if ( now )
         {
             dg->start();
         } else {
             QTimer::singleShot ( 400, dg, SLOT ( start() ) );
         }
+    }
 
     return 1;
 }
