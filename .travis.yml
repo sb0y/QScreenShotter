@@ -15,7 +15,7 @@ before_install:
 - sudo apt-get install qt5-default qttools5-dev-tools qtbase5-dev
 - wget https://qt.gitorious.org/qt/qtx11extras/archive/bcc86311359e138ecc3a8fc1ce6eee1cda2ec0f5.tar.gz -O /tmp/qx11extras.tar.gz
 - tar -xvf /tmp/qx11extras.tar.gz
-- cd /tmp/qt-qtx11extras && qmake && make && make install
+- cd /tmp/qt-qtx11extras && qmake && make && sudo make install
 
 script:
   - qmake -project
