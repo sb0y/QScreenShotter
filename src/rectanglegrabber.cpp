@@ -44,12 +44,14 @@ void rectangleGrabber::drawScreen ( bool banner )
         subHeader.setTextFormat ( Qt::RichText );
         subHeader.setTextWidth ( textBox.width() - 10 );
 
+        p.setFont ( QFont ( "Arial" ) );
+
         p.drawRoundedRect ( textBox, 6.0, 6.0 );
         p.setPen ( 0xCECECE );
         p.setRenderHint ( QPainter::Antialiasing, true );
 
         p.drawStaticText ( textBox.left() + 10, textBox.top() + 10, header );
-        p.drawStaticText ( textBox.left() + 10, ( textBox.top() + header.size().height() - subHeader.size().height() ), subHeader );
+        p.drawStaticText ( textBox.left() + 10, subHeader.size().height(), subHeader );
     }
 
     p.end();
