@@ -16,6 +16,7 @@ before_install:
 - wget https://qt.gitorious.org/qt/qtx11extras/archive/bcc86311359e138ecc3a8fc1ce6eee1cda2ec0f5.tar.gz -O /tmp/qx11extras.tar.gz
 - tar -xvpf /tmp/qx11extras.tar.gz
 - cd qt-qtx11extras && qmake && make && sudo make install
+- cd ..
 
 script:
   - qmake -project
