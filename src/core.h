@@ -19,7 +19,9 @@
 //#include "xwindowrectangle.h"
 #include "screenshot.h"
 #include <QTimer>
-#include "neweventfilter.h"
+#ifdef HAVE_X11
+    #include "neweventfilter.h"
+#endif
 #include "x11info.h"
 #define getWindow(winID,cast_type)({static_cast<cast_type>(system::getCore()->windows[winID]);})
 

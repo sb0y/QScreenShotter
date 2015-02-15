@@ -15,7 +15,9 @@ core::core ( int &argc, char *argv[] ) :
     //setAttribute ( Qt::AA_X11InitThreads, true );
 
     isVisible = true;
+    #ifdef HAVE_X11
     installNativeEventFilter ( new NewEventFilter );
+    #endif
     sc = NULL;
 }
 

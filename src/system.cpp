@@ -2,7 +2,7 @@
 #include "core.h"
 #include <qdebug.h>
 
-core *system::main = NULL;
+core *system::instance = NULL;
 int system::argc = 0;
 char **system::argv = NULL;
 
@@ -13,12 +13,12 @@ system::system(QObject *parent) :
 
 core* system::getCore()
 {
-    if ( NULL == system::main )
+    if ( NULL == system::instance )
     {
-        system::main = new core ( argc, argv );
+        system::instance = new core ( argc, argv );
     }
 
-    return system::main;
+    return system::instance;
 }
 
 void system::setArgs (int ac, char **av )

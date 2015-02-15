@@ -2,15 +2,18 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include "core.h"
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
-#include <X11/Xutil.h>
-#include <X11/extensions/Xfixes.h>
-#include <X11/extensions/shape.h>
+#ifdef HAVE_X11
+    #include <X11/Xlib.h>
+    #include <X11/Xatom.h>
+    #include <X11/Xutil.h>
+    #include <X11/extensions/Xfixes.h>
+    #include <X11/extensions/shape.h>
+    #include <QX11Info>
+#endif
 #include <QDesktopWidget>
+
 //#include "customframe.h"
 //include "X11Info.h"
-#include <QX11Info>
 
 windowGrabberLinux::windowGrabberLinux()
 {

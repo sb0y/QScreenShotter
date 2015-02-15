@@ -4,24 +4,21 @@
 #
 #-------------------------------------------------
 
-unix:!mac:DEFINES += HAVE_X11
-
-QT += core gui
-
-DEFINES += QT_NO_USING_NAMESPACE
-
-greaterThan ( QT_MAJOR_VERSION, 4 ) : QT += widgets
-
-unix
+greaterThan ( QT_MAJOR_VERSION, 4 )
 {
-    greaterThan ( QT_MAJOR_VERSION, 4 ) : QT += x11extras
+    QT += widgets
+    DEFINES += HAVE_QT5
 }
+
+unix:!mac:DEFINES += HAVE_X11
+greaterThan ( QT_MAJOR_VERSION, 4 ) : unix:QT += x11extras
+QT += core gui
 
 TARGET = qsc
 TEMPLATE = app
-LIBS += -lX11 # TODO: remove
-LIBS += -lxcb
-LIBS += -lXfixes
+unix:!mac:LIBS += -lX11 # TODO: remove
+unix:!mac:LIBS += -lxcb
+unix:!mac:LIBS += -lXfixes
 
 include ( src/common.pri )
 

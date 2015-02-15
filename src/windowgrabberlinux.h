@@ -10,7 +10,9 @@
 #include <QBrush>
 #include <QMouseEvent>
 #include <QGuiApplication>
-#include <xcb/xcb.h>
+#ifdef HAVE_X11
+    #include <xcb/xcb.h>
+#endif
 #include <QPaintEvent>
 #include <QGraphicsScene>
 #include <QGraphicsView>

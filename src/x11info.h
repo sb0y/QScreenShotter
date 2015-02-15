@@ -1,7 +1,7 @@
 #ifndef X11INFO_H
 #define X11INFO_H
 #include <QtCore/qnamespace.h>
-#include "QtX11Extras/qtx11extrasglobal.h"
+//#include "QtX11Extras/qtx11extrasglobal.h"
 
 #ifndef QTX11EXTRASGLOBAL_H
 #define QTX11EXTRASGLOBAL_H

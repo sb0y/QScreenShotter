@@ -11,14 +11,14 @@ class system : public QObject
     Q_OBJECT
 
 private:
-    static core *main;
+    static core *instance;
     static int argc;
     static char **argv;
 
 public:
     explicit system(QObject *parent = 0);
     static core* getCore();
-    static void setArgs (int argc, char **argv );
+    static void setArgs ( int argc, char **argv );
     static QString makeNewNameFromOld ( QFileInfo &file );
 
 signals:

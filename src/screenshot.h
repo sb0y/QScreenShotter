@@ -2,9 +2,12 @@
 #define SCREENSHOT_H
 
 #include "system.h"
-#include "windowgrabberlinux.h"
-#include "desktopgrabberlinux.h"
+#ifdef HAVE_X11
+    #include "windowgrabberlinux.h"
+    #include "desktopgrabberlinux.h"
+#endif
 #include "rectanglegrabber.h"
+
 class core;
 
 class screenshot : public system
