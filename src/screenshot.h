@@ -4,6 +4,8 @@
 #include "system.h"
 #ifdef HAVE_X11
     #include "windowgrabberlinux.h"
+#elif WIN32
+    #include "windowgrabberwindows.h"
 #endif
 #include "desktopgrabber.h"
 #include "rectanglegrabber.h"

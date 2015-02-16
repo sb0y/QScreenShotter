@@ -25,6 +25,8 @@ int screenshot::shootWindow()
     if ( NULL == wg )
     #ifdef HAVE_X11
         wg = new windowGrabberLinux;
+    #elif WIN32
+        wg = new windowGrabberWindows;
     #endif
 
     if ( NULL != wg )
