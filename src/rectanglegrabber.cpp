@@ -7,7 +7,7 @@ rectangleGrabber::rectangleGrabber()
 
     setMouseTracking ( true );
     setWindowModality( Qt::WindowModal );
-    setFixedSize ( screen.size().width(), screen.size().height() );
+    //setFixedSize ( screen.size().width(), screen.size().height() );
     layout = new QHBoxLayout ( this );
 
     setLayout ( layout );
@@ -15,6 +15,9 @@ rectangleGrabber::rectangleGrabber()
     label = new QLabel ( this );
     layout->addWidget ( label );
     layout->setContentsMargins ( 0, 0, 0, 0 );
+
+    setFocusPolicy ( Qt::StrongFocus );
+    setEnabled ( true );
 
     isBannerShown = true;
 }
@@ -76,12 +79,18 @@ void rectangleGrabber::prepare()
     screen = qApp->primaryScreen()->geometry();
     drawScreen();
 
-    exec();
+    //exec();
+    showFullScreen();
+    setFocus ( Qt::PopupFocusReason );
+    grabKeyboard();
+    raise();
+    activateWindow();
 }
 
 void rectangleGrabber::done()
 {
     close();
+    releaseKeyboard();
     system::getCore()->toggleVisability();
 }
 
@@ -130,9 +139,9 @@ void rectangleGrabber::keyPressEvent ( QKeyEvent *e )
         case Qt::Key_Return:
         case Qt::Key_Enter:
 
+            e->accept();
             save();
             done();
-            e->accept();
 
         break;
 
@@ -140,6 +149,12 @@ void rectangleGrabber::keyPressEvent ( QKeyEvent *e )
             e->ignore();
         break;
     }
+}
+
+void rectangleGrabber::showEvent ( QShowEvent *e )
+{
+    setFocus ( Qt::PopupFocusReason );
+    e->ignore();
 }
 
 void rectangleGrabber::mouseMoveEvent ( QMouseEvent *e )

@@ -59,6 +59,7 @@ private:
     core *main;
     void resizeEvent ( QResizeEvent *event );
     void paintEvent ( QPaintEvent *);
+    void keyPressEvent ( QKeyEvent *e );
     //bool eventFilter ( QObject *obj, QEvent *event );
 protected:
 };

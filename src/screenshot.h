@@ -4,8 +4,8 @@
 #include "system.h"
 #ifdef HAVE_X11
     #include "windowgrabberlinux.h"
-    #include "desktopgrabberlinux.h"
 #endif
+#include "desktopgrabber.h"
 #include "rectanglegrabber.h"
 
 class core;

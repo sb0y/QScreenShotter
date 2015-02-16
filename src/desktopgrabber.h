@@ -1,18 +1,18 @@
-#ifndef DESKTOPGRABBER_LINUX_H
-#define DESKTOPGRABBER_LINUX_H
+#ifndef DESKTOPGRABBER_H
+#define DESKTOPGRABBER_H
 
 #include "grabberbase.h"
 #include <QMouseEvent>
 
 class core;
 
-class desktopGrabberLinux : public grabberBase
+class desktopGrabber : public grabberBase
 {
     Q_OBJECT
 private:
 public:
-    explicit desktopGrabberLinux();
-    virtual ~desktopGrabberLinux();
+    explicit desktopGrabber();
+    virtual ~desktopGrabber();
     void prepare();
     void done();
 
@@ -26,4 +26,4 @@ public slots:
 
 };
 
-#endif // DESKTOPGRABBER_LINUX_H
+#endif // DESKTOPGRABBER_H

@@ -1,39 +1,39 @@
-#include "desktopgrabberlinux.h"
+#include "desktopgrabber.h"
 #include "core.h"
 
-desktopGrabberLinux::desktopGrabberLinux()
+desktopGrabber::desktopGrabber()
 {
     //setMouseTracking ( true );
     //setWindowModality( Qt::WindowModal );
     //setFixedSize ( 0, 0 );
 }
 
-desktopGrabberLinux::~desktopGrabberLinux()
+desktopGrabber::~desktopGrabber()
 {
 
 }
 
-void desktopGrabberLinux::prepare()
+void desktopGrabber::prepare()
 {
     //QApplication::setOverrideCursor ( QCursor ( Qt::CrossCursor ) );
     //exec();
 }
 
-void desktopGrabberLinux::mousePressEvent ( QMouseEvent *e )
+void desktopGrabber::mousePressEvent ( QMouseEvent *e )
 {
     Q_UNUSED ( e );
     //done();
     e->accept();
 }
 
-void desktopGrabberLinux::done()
+void desktopGrabber::done()
 {
     QList < QScreen *> screens = QGuiApplication::screens();
     QList < QScreen *>::iterator i = screens.begin();
 
     for ( ; i != screens.end(); ++i )
     {
-        QPixmap qpix = (*i)->grabWindow ( 0, 0, 0, -1, -1 );
+        QPixmap qpix = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
         getWindow ( "main", MainWindow* )->setScreenPic ( qpix );
         system::getCore()->setPixmap ( qpix );
     }
@@ -43,7 +43,7 @@ void desktopGrabberLinux::done()
     system::getCore()->toggleVisability();
 }
 
-void desktopGrabberLinux::start()
+void desktopGrabber::start()
 {
     prepare();
     done();

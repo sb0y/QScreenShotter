@@ -13,7 +13,8 @@ MainWindow::MainWindow ( QWidget *parent ) :
     setWindowTitle ( "" );
 
     //qApp->installEventFilter ( this );
-    ui->shootMode->setFixedSize ( 19, 23 );
+    ui->shootMode->setFixedWidth ( 19 );
+    ui->shootMode->view()->setMinimumWidth ( 150 );
 
     core *c = system::getCore();
 
@@ -125,6 +126,7 @@ void MainWindow::openFileDialog()
     if ( fileName.right ( 4 ) != ".png" )
     {
         fileName += ".png";
+
     }
 
     QImageWriter imagefile;
@@ -137,6 +139,11 @@ void MainWindow::openFileDialog()
 void MainWindow::paintEvent(QPaintEvent *)
 {
 
+}
+
+void MainWindow::keyPressEvent ( QKeyEvent *e )
+{
+    e->ignore();
 }
 
 /*void MainWindow::setVisible ( bool visible )

@@ -8,7 +8,8 @@ SOURCES += src/main.cpp\
     src/grabberbase.cpp \
     src/rectanglegrabber.cpp \
     src/rubberband.cpp \
-    src/customframe.cpp
+    src/customframe.cpp \
+    src/desktopgrabber.cpp
 
 HEADERS  += src/mainwindow.h \
     src/core.h \
@@ -19,16 +20,15 @@ HEADERS  += src/mainwindow.h \
     src/grabberbase.h \
     src/rectanglegrabber.h \
     src/rubberband.h \
-    src/customframe.h
+    src/customframe.h \
+    src/desktopgrabber.h
 
-unix:!mac:HEADERS  += src/desktopgrabberlinux.h \
-    src/windowgrabberlinux.h \
+unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \
     src/xwindowrectangle.h \
     src/neweventfilter.h
 
-unix:!mac:SOURCES += src/desktopgrabberlinux.cpp \
-    src/windowgrabberlinux.cpp \
+unix:!mac:SOURCES += src/windowgrabberlinux.cpp \
     src/x11info.cpp \
     src/xwindowrectangle.cpp \
     src/neweventfilter.cpp

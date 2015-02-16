@@ -49,8 +49,11 @@ int core::exec()
         sc = new screenshot ( this );
     }
 
+    #ifdef WIN32
+    mw->show();
+    mw->hide();
+    #endif
     sc->shootDesktop ( true );
-
     mw->show();
 
     screen = qApp->primaryScreen()->geometry();

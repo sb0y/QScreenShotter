@@ -95,9 +95,9 @@
                  <bool>true</bool>
                 </property>
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>16</horstretch>
-                  <verstretch>16</verstretch>
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="minimumSize">
@@ -107,7 +107,10 @@
                  </size>
                 </property>
                 <property name="maxVisibleItems">
-                 <number>0</number>
+                 <number>3</number>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
                 </property>
                 <property name="minimumContentsLength">
                  <number>0</number>
@@ -189,7 +192,7 @@
      <x>0</x>
      <y>0</y>
      <width>469</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAbout">

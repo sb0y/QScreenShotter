@@ -36,9 +36,7 @@ int screenshot::shootWindow()
 int screenshot::shootDesktop ( bool now )
 {
     if ( NULL == dg )
-    #ifdef HAVE_X11
-        dg = new desktopGrabberLinux;
-    #endif
+       dg = new desktopGrabber;
 
     if ( NULL != dg )
     {
@@ -56,9 +54,7 @@ int screenshot::shootDesktop ( bool now )
 int screenshot::shootRectangle()
 {
     if ( NULL == rg )
-    #ifdef HAVE_X11
         rg = new rectangleGrabber;
-    #endif
 
     if ( NULL != rg )
         QTimer::singleShot ( 400, rg, SLOT ( start() ) );
