@@ -5,6 +5,11 @@
 #include <QWidget>
 #include <QDialog>
 #include <QMouseEvent>
+#ifdef WIN32
+    #include <windows.h>
+    #include <qt_windows.h>
+    #include <QtWinExtras>
+#endif
 #include "grabberbase.h"
 
 class windowGrabberWindows : public grabberBase

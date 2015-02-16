@@ -8,10 +8,11 @@ greaterThan ( QT_MAJOR_VERSION, 4 )
 {
     QT += widgets
     DEFINES += HAVE_QT5
+    unix:QT += x11extras
+    win32:QT += winextras
 }
 
 unix:!mac:DEFINES += HAVE_X11
-greaterThan ( QT_MAJOR_VERSION, 4 ) : unix:QT += x11extras
 QT += core gui
 
 TARGET = qsc
