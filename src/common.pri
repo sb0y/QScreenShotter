@@ -33,5 +33,9 @@ unix:!mac:SOURCES += src/windowgrabberlinux.cpp \
     src/xwindowrectangle.cpp \
     src/neweventfilter.cpp
 
+win32:HEADERS += src/windowgrabberwindows.h
+
+win32:SOURCES += src/windowgrabberwindows.cpp
+
 FORMS    += src/mainwindow.ui \
     src/aboutdialog.ui
