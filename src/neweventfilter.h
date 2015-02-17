@@ -3,6 +3,11 @@
 
 #include <QAbstractNativeEventFilter>
 #include <QObject>
+#ifdef HAVE_X11
+    #include <xcb/xcb.h>
+#elif WIN32
+    #include <windows.h>
+#endif
 
 class NewEventFilter : public QAbstractNativeEventFilter
 {

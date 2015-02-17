@@ -48,3 +48,14 @@ void desktopGrabber::start()
     prepare();
     done();
 }
+
+void desktopGrabber::showEvent ( QShowEvent * )
+{
+
+}
+
+
+void desktopGrabber::hideEvent ( QHideEvent * )
+{
+
+}

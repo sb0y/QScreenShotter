@@ -52,6 +52,7 @@ protected:
     void mouseMoveEvent ( QMouseEvent *e );
     void keyPressEvent ( QKeyEvent *e );
     bool eventFilter ( QObject *, QEvent * );
+    void showEvent (QShowEvent *);
 
 signals:
 

@@ -6,7 +6,9 @@
 #include <QDialog>
 #include <QMouseEvent>
 #ifdef WIN32
+    #define OEMRESOURCE
     #include <windows.h>
+    #include <Winuser.h>
     #include <qt_windows.h>
     #include <QtWinExtras>
 #endif
@@ -25,8 +27,10 @@ public:
     void save();
 
 protected:
-    void mousePressEvent( QMouseEvent *e );
-    void mouseMoveEvent ( QMouseEvent *e );
+    void mousePressEvent( QMouseEvent * );
+    void mouseMoveEvent ( QMouseEvent * );
+    bool eventFilter ( QObject *, QEvent * );
+   // void showEvent ( QShowEvent * );
 
 signals:
 

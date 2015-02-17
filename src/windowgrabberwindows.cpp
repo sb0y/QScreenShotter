@@ -4,7 +4,17 @@
 windowGrabberWindows::windowGrabberWindows()
 {
     setMouseTracking ( true );
-    setWindowModality( Qt::WindowModal );
+    setWindowModality ( Qt::WindowModal );
+    setFocusPolicy ( Qt::StrongFocus );
+    setEnabled ( true );
+    move ( 0, 0 );
+    //setFixedSize(1000,1000);
+    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+    setParent(0); // Create TopLevel-Widget
+   // setAttribute(Qt::WA_NoSystemBackground, true);
+    //setAttribute(Qt::WA_TranslucentBackground, true);
+    //setAttribute(Qt::WA_PaintOnScreen); // as pointed by Caveman (thanks!)
+    // Set WS_EX_LAYERED on this window
 }
 
 windowGrabberWindows::~windowGrabberWindows()
@@ -76,30 +86,54 @@ void windowGrabberWindows::save()
 
 void windowGrabberWindows::done()
 {
-
+    QApplication::restoreOverrideCursor();
+    releaseMouse();
+    system::getCore()->toggleVisability();
 }
 
 void windowGrabberWindows::start()
 {
     prepare();
-    exec();
 }
 
 void windowGrabberWindows::prepare()
 {
+   //QApplication::setOverrideCursor ( QCursor ( Qt::CrossCursor ) );
+   exec();
 
+   /*HCURSOR hcursor = LoadCursor ( 0, IDC_ARROW );
+   SetSystemCursor ( hcursor, OCR_CROSS );
+   hcursor = LoadCursor ( 0, IDC_ );
+   SetSystemCursor ( hcursor, OCR_CROSS );
+   hcursor = LoadCursor ( 0, IDC_ARROW );
+   SetSystemCursor ( hcursor, OCR_CROSS );*/
+
+   setFocus ( Qt::PopupFocusReason );
+   raise();
+   activateWindow();
+   grabMouse();
 }
 
 void windowGrabberWindows::mouseMoveEvent ( QMouseEvent *e )
 {
+    qDebug() << "mouse move";
     e->ignore();
 }
 
 void windowGrabberWindows::mousePressEvent ( QMouseEvent *e )
 {
-    e->accept();
-
+    e->ignore();
+    qDebug() << "here";
     windowUnderCursor();
     done();
 }
 
+bool windowGrabberWindows::eventFilter( QObject *o, QEvent *e )
+{
+    e->ignore();
+    return false;
+}
+
+/*void windowGrabberWindows::showEvent ( QShowEvent * )
+{
+}*/

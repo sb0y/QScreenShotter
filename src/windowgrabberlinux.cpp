@@ -406,3 +406,8 @@ void windowGrabberLinux::drawOnLayer ( int x, int y, int w, int h )
 
     label->setPixmap ( pm );
 }
+
+void windowGrabberLinux::showEvent ( QShowEvent * )
+{
+
+}

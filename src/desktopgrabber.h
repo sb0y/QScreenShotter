@@ -18,6 +18,8 @@ public:
 
 protected:
     void mousePressEvent( QMouseEvent *event );
+    void showEvent ( QShowEvent * );
+    void hideEvent ( QHideEvent * );
 
 signals:
 
