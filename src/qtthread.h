@@ -4,7 +4,9 @@
 #include <QObject>
 #include <QThread>
 #include <QTimer>
-#include "mousespy.h"
+#ifdef WIN32
+    #include "mousespy.h"
+#endif
 #include <qdebug.h>
 
 class threadWorker : public QObject
