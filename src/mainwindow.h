@@ -19,6 +19,7 @@
 #include <QFile>
 #include <QImageWriter>
 #include <qdebug.h>
+#include "screenshot.h"
 
 class core;
 
@@ -50,7 +51,7 @@ public:
 public slots:
     void setMainAction ( enum actions action = DEFAULT );
     void openFileDialog();
-   // void setVisible ( bool visible );
+    //void setVisible ( bool visible );
 
 signals:
 
@@ -61,7 +62,9 @@ private:
     void paintEvent ( QPaintEvent *);
     void keyPressEvent ( QKeyEvent *e );
     //bool eventFilter ( QObject *obj, QEvent *event );
+
 protected:
+    //void showEvent ( QShowEvent *e );
 };
 
 #endif // MAINWINDOW_H

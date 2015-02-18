@@ -7,14 +7,16 @@ windowGrabberWindows::windowGrabberWindows()
     setWindowModality ( Qt::WindowModal );
     setFocusPolicy ( Qt::StrongFocus );
     setEnabled ( true );
-    move ( 0, 0 );
+    //move ( 0, 0 );
     //setFixedSize(1000,1000);
-    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-    setParent(0); // Create TopLevel-Widget
-   // setAttribute(Qt::WA_NoSystemBackground, true);
+    //setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+   // setParent(0); // Create TopLevel-Widget
+    //setAttribute(Qt::WA_NoSystemBackground, true);
     //setAttribute(Qt::WA_TranslucentBackground, true);
-    //setAttribute(Qt::WA_PaintOnScreen); // as pointed by Caveman (thanks!)
-    // Set WS_EX_LAYERED on this window
+   // setAttribute(Qt::WA_PaintOnScreen); // as pointed by Caveman (thanks!)
+    //QTthread *t = new QTthread;
+    //t->setWorker ( new mouseSpy ( this ) );
+    //t->start();
 }
 
 windowGrabberWindows::~windowGrabberWindows()
@@ -98,15 +100,9 @@ void windowGrabberWindows::start()
 
 void windowGrabberWindows::prepare()
 {
-   //QApplication::setOverrideCursor ( QCursor ( Qt::CrossCursor ) );
-   exec();
-
-   /*HCURSOR hcursor = LoadCursor ( 0, IDC_ARROW );
-   SetSystemCursor ( hcursor, OCR_CROSS );
-   hcursor = LoadCursor ( 0, IDC_ );
-   SetSystemCursor ( hcursor, OCR_CROSS );
-   hcursor = LoadCursor ( 0, IDC_ARROW );
-   SetSystemCursor ( hcursor, OCR_CROSS );*/
+   //exec();
+   //showFullScreen();
+   QApplication::setOverrideCursor ( QCursor ( Qt::CrossCursor ) );
 
    setFocus ( Qt::PopupFocusReason );
    raise();
@@ -123,7 +119,6 @@ void windowGrabberWindows::mouseMoveEvent ( QMouseEvent *e )
 void windowGrabberWindows::mousePressEvent ( QMouseEvent *e )
 {
     e->ignore();
-    qDebug() << "here";
     windowUnderCursor();
     done();
 }

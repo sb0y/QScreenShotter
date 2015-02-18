@@ -9,7 +9,8 @@ SOURCES += src/main.cpp\
     src/rectanglegrabber.cpp \
     src/rubberband.cpp \
     src/customframe.cpp \
-    src/desktopgrabber.cpp
+    src/desktopgrabber.cpp \
+    src/qtthread.cpp
 
 HEADERS  += src/mainwindow.h \
     src/core.h \
@@ -21,7 +22,8 @@ HEADERS  += src/mainwindow.h \
     src/rectanglegrabber.h \
     src/rubberband.h \
     src/customframe.h \
-    src/desktopgrabber.h
+    src/desktopgrabber.h \
+    src/qtthread.h
 
 unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \
@@ -34,10 +36,12 @@ unix:!mac:SOURCES += src/windowgrabberlinux.cpp \
     src/neweventfilter.cpp
 
 win32:HEADERS += src/windowgrabberwindows.h \
-                src/neweventfilter.h
+                src/neweventfilter.h \
+                src/mousespy.h
 
 win32:SOURCES += src/windowgrabberwindows.cpp \
-                src/neweventfilter.cpp
+                src/neweventfilter.cpp \
+                src/mousespy.cpp
 
 FORMS    += src/mainwindow.ui \
     src/aboutdialog.ui

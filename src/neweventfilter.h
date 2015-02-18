@@ -6,7 +6,11 @@
 #ifdef HAVE_X11
     #include <xcb/xcb.h>
 #elif WIN32
+    #define OEMRESOURCE
     #include <windows.h>
+    #include <Winuser.h>
+    #include <qt_windows.h>
+    #include <QtWinExtras>
 #endif
 
 class NewEventFilter : public QAbstractNativeEventFilter

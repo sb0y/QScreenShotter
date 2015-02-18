@@ -6,7 +6,6 @@ NewEventFilter::NewEventFilter()
 {
 }
 
-
 bool NewEventFilter::nativeEventFilter ( const QByteArray &eventType, void *message, long *l ) Q_DECL_OVERRIDE
 {
     #ifdef HAVE_X11
@@ -17,12 +16,30 @@ bool NewEventFilter::nativeEventFilter ( const QByteArray &eventType, void *mess
     #elif WIN32
     if ( eventType == "windows_generic_MSG" || eventType == "windows_dispatcher_MSG" )
     {
-        const MSG &msg = *static_cast < MSG * > ( message );
+        const MSG &msg = *static_cast < MSG* > ( message );
+        /*HCURSOR cursor[10];
+        cursor[10] = NULL;*/
 
         switch ( msg.message )
         {
             case WM_SETCURSOR:
-                qDebug() << "here";
+                /*cursor[0] = LoadCursor ( 0, IDC_ARROW );
+                cursor[1] = LoadCursor ( 0, IDC_IBEAM );
+                cursor[2] = LoadCursor ( 0, IDC_ARROW );
+                cursor[3] = LoadCursor ( 0, IDC_SIZE );
+                cursor[4] = LoadCursor ( 0, IDC_HAND );
+                cursor[5] = LoadCursor ( 0, IDC_UPARROW );
+                cursor[6] = LoadCursor ( 0, IDC_APPSTARTING );
+                cursor[7] = LoadCursor ( 0, IDC_HAND );
+                cursor[8] = LoadCursor ( 0, IDC_NO );
+                cursor[9] = LoadCursor ( 0, IDC_CROSS );
+
+                for ( int i = 0; cursor[i] != NULL; ++i )
+                {
+                    SetSystemCursor ( cursor[i], OCR_CROSS );
+                }*/
+
+                //qDebug() << "here ";
             break;
         }
     }

@@ -53,10 +53,16 @@ int core::exec()
 
     #ifdef WIN32
     mw->show();
-    mw->hide();
+    mw->setHidden ( true );
     #endif
+
     sc->shootDesktop ( true );
+
+    #ifdef WIN32
+    mw->setHidden ( false );
+    #elif HAVE_X11
     mw->show();
+    #endif
 
     screen = qApp->primaryScreen()->geometry();
 

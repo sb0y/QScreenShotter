@@ -31,6 +31,7 @@ MainWindow::MainWindow ( QWidget *parent ) :
     menu->addAction ( file );
 
     QObject::connect ( file, SIGNAL ( triggered ( bool ) ), this, SLOT ( openFileDialog() ) );
+
 //    c->rect.draw();
 }
 
@@ -80,7 +81,7 @@ void MainWindow::setScreenPic ( QPixmap &pic )
 
 void MainWindow::resizeEvent ( QResizeEvent *event )
 {
-    if ( !main->picture.isNull() )
+    if ( !system::getCore()->picture.isNull() )
     {
         QSize size = ui->mainPic->size();
         ui->mainPic->setPixmap ( main->picture.scaled ( size.width(), size.height(), Qt::KeepAspectRatio, Qt::SmoothTransformation ) );
@@ -145,6 +146,17 @@ void MainWindow::keyPressEvent ( QKeyEvent *e )
 {
     e->ignore();
 }
+
+/*void MainWindow::showEvent ( QShowEvent *e )
+{
+    if ( NULL == system::getCore()->sc )
+    {
+        system::getCore()->sc = new screenshot ( system::getCore() );
+    }
+
+    system::getCore()->sc->shootDesktop ( true );
+    QMainWindow::showEvent ( e );
+}*/
 
 /*void MainWindow::setVisible ( bool visible )
 {

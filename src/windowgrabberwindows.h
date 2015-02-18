@@ -11,8 +11,10 @@
     #include <Winuser.h>
     #include <qt_windows.h>
     #include <QtWinExtras>
+    #include "mousespy.h"
 #endif
 #include "grabberbase.h"
+#include "qtthread.h"
 
 class windowGrabberWindows : public grabberBase
 {
@@ -25,6 +27,9 @@ public:
     void prepare();
     void done();
     void save();
+
+    //LRESULT CALLBACK mouseProc (int nCode, WPARAM wParam, LPARAM lParam);
+    void WINAPI myMouseLogger();
 
 protected:
     void mousePressEvent( QMouseEvent * );
