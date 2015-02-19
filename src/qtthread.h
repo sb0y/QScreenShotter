@@ -33,7 +33,7 @@ private:
 public:
     QTthread();
     ~QTthread();
-    void setWorker ( mouseSpy *w );
+    void setWorker (QObject *w );
 
 public slots:
     void run();
