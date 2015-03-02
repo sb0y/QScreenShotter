@@ -13,6 +13,7 @@ MainWindow::MainWindow ( QWidget *parent ) :
     setWindowTitle ( "" );
 
     //qApp->installEventFilter ( this );
+    setMouseTracking ( true );
     ui->shootMode->setFixedWidth ( 19 );
     ui->shootMode->view()->setMinimumWidth ( 150 );
 
@@ -45,7 +46,13 @@ int MainWindow::init ( core *core )
 {
     main = core;
     setMainAction ( DEFAULT );
+
     return 1;
+}
+
+void MainWindow::mouseMoveEvent ( QMouseEvent *e )
+{
+    qDebug() << "here";
 }
 
 void MainWindow::setMainAction ( enum MainWindow::actions action )

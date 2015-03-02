@@ -61,6 +61,7 @@ private:
     void resizeEvent ( QResizeEvent *event );
     void paintEvent ( QPaintEvent *);
     void keyPressEvent ( QKeyEvent *e );
+    void mouseMoveEvent ( QMouseEvent *e );
     //bool eventFilter ( QObject *obj, QEvent *event );
 
 protected:

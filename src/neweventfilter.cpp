@@ -41,6 +41,18 @@ bool NewEventFilter::nativeEventFilter ( const QByteArray &eventType, void *mess
 
                 //qDebug() << "here ";
             break;
+
+            case WM_NCLBUTTONDOWN:
+                //qDebug() << "here";
+            break;
+
+            case WM_MOUSEACTIVATE:
+                //qDebug() << "here";
+            break;
+
+            default:
+                //qDebug() << msg.message;
+            break;
         }
     }
     #endif

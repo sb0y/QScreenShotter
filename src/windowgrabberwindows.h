@@ -20,6 +20,9 @@ class windowGrabberWindows : public grabberBase
 {
     Q_OBJECT
 public:
+
+    QDialog *wnd;
+
     explicit windowGrabberWindows();
     ~windowGrabberWindows();
 

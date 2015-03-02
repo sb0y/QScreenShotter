@@ -1,5 +1,6 @@
 #include "core.h"
 #include <qdebug.h>
+#include <windows.h>
 
 core::core ( int &argc, char *argv[] ) :
     QApplication ( argc, argv )
@@ -41,7 +42,6 @@ core::~core()
 int core::exec()
 {
     MainWindow *mw = new MainWindow;
-    mw->init ( this );
     windows [ "main" ] = mw;
 
     initTray();
@@ -63,6 +63,8 @@ int core::exec()
     #elif HAVE_X11
     mw->show();
     #endif
+
+    mw->init ( this );
 
     screen = qApp->primaryScreen()->geometry();
 
