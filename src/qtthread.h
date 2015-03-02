@@ -28,12 +28,12 @@ class QTthread : public QThread
 {
     Q_OBJECT
 private:
-    mouseSpy *worker;
+    QObject *worker;
 
 public:
     QTthread();
     ~QTthread();
-    void setWorker ( mouseSpy *w );
+    void setWorker (QObject *w );
 
 public slots:
     void run();

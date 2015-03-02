@@ -29,7 +29,7 @@ void QTthread::start()
 {
 }
 
-void QTthread::setWorker ( mouseSpy *w )
+void QTthread::setWorker ( QObject *w )
 {
     worker = w;
 }
