@@ -10,7 +10,8 @@ SOURCES += src/main.cpp\
     src/rubberband.cpp \
     src/customframe.cpp \
     src/desktopgrabber.cpp \
-    src/qtthread.cpp
+    src/qtthread.cpp \
+    src/grabberbasedialog.cpp
 
 HEADERS  += src/mainwindow.h \
     src/core.h \
@@ -23,7 +24,8 @@ HEADERS  += src/mainwindow.h \
     src/rubberband.h \
     src/customframe.h \
     src/desktopgrabber.h \
-    src/qtthread.h
+    src/qtthread.h \
+    src/grabberbasedialog.h
 
 unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \

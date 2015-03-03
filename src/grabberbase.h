@@ -9,9 +9,8 @@
 #include <QScreen>
 #include <QApplication>
 
-class grabberBase : public QDialog
+class grabberBase
 {
-    Q_OBJECT
 public:
 
     explicit grabberBase();
@@ -19,14 +18,10 @@ public:
     virtual void done() = 0;
     virtual void prepare() = 0;
 
-protected:
-
-private:
-
-signals:
-
-public slots:
     virtual void start() = 0;
+    virtual QPixmap* pixmap() = 0;
+
+protected:
 };
 
 #endif // GRABBERBASE_H

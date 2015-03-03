@@ -59,3 +59,8 @@ void desktopGrabber::hideEvent ( QHideEvent * )
 {
 
 }
+
+QPixmap* desktopGrabber::pixmap()
+{
+    return NULL;
+}

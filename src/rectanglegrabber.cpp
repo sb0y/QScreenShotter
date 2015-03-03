@@ -24,7 +24,7 @@ rectangleGrabber::rectangleGrabber()
 
 void rectangleGrabber::drawScreen ( bool banner )
 {
-    QPixmap pm ( pixmap );
+    QPixmap pm ( _pixmap );
 
     QPainter p ( &pm );
     QBrush b ( QColor ( 0,0,0,128 ) ); // adjust color and alpha to taste
@@ -75,7 +75,7 @@ void rectangleGrabber::start()
 
 void rectangleGrabber::prepare()
 {
-    pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
+    _pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
     screen = qApp->primaryScreen()->geometry();
     drawScreen();
 
@@ -171,4 +171,10 @@ void rectangleGrabber::save()
 {
     system::getCore()->setPixmap ( band->pixmap );
     getWindow ( "main", MainWindow* )->setScreenPic ( band->pixmap );
+}
+
+
+QPixmap* rectangleGrabber::pixmap()
+{
+    return &_pixmap;
 }

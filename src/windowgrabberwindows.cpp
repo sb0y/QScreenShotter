@@ -159,6 +159,11 @@ bool windowGrabberWindows::eventFilter( QObject *o, QEvent *e )
     return false;
 }
 
+QPixmap* windowGrabberWindows::pixmap()
+{
+    return NULL;
+}
+
 /*void windowGrabberWindows::showEvent ( QShowEvent * )
 {
 }*/

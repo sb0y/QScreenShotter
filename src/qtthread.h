@@ -15,7 +15,7 @@ class threadWorker : public QObject
 private slots:
     void onTimeout()
     {
-        qDebug()<<"Worker::onTimeout get called from?: " << QThread::currentThreadId();
+        qDebug() << "Worker::onTimeout get called from?: " << QThread::currentThreadId();
     }
 
     void start()

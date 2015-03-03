@@ -13,8 +13,9 @@
 #include <QPainter>
 #include <QTimer>
 #include "rubberband.h"
+#include "grabberbasedialog.h"
 
-class rectangleGrabber : public grabberBase
+class rectangleGrabber : public grabberBaseDialog
 {
     Q_OBJECT
 private:
@@ -27,6 +28,7 @@ public:
     void done();
     void save();
     void prepare();
+    QPixmap* pixmap();
 
     bool isBannerShown;
     void drawScreen ( bool banner = true );
@@ -34,7 +36,7 @@ public:
 
     QRect screen;
     QLabel *label;
-    QPixmap pixmap;
+    QPixmap _pixmap;
     QHBoxLayout *layout;
 
 signals:

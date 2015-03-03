@@ -39,7 +39,7 @@ rubberBand::~rubberBand()
 
 void rubberBand::resizeEvent ( QResizeEvent *e )
 {
-    pixmap = static_cast < rectangleGrabber* > ( parent() )->pixmap.copy ( x(), y(), width(), height() );
+    pixmap = system::getCore()->sc->rg->pixmap()->copy ( x(), y(), width(), height() );
     label->setPixmap ( pixmap );
 
     _rubberBand->resize ( size() );

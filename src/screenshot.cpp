@@ -5,6 +5,7 @@ screenshot::screenshot ( core *c )
 {
     main = c;
     wg = NULL, dg = NULL, rg = NULL;
+    currentGrabber = NULL;
 }
 
 screenshot::~screenshot()
@@ -30,7 +31,10 @@ int screenshot::shootWindow()
     #endif
 
     if ( NULL != wg )
-        QTimer::singleShot ( 400, wg, SLOT ( start() ) );
+    {
+        currentGrabber = wg;
+        QTimer::singleShot ( 400, this, SLOT ( startCurrentGrabber() ) );
+    }
 
     return 1;
 }
@@ -46,7 +50,8 @@ int screenshot::shootDesktop ( bool now )
         {
             dg->start();
         } else {
-            QTimer::singleShot ( 400, dg, SLOT ( start() ) );
+            currentGrabber = dg;
+            QTimer::singleShot ( 400, this, SLOT ( startCurrentGrabber() ) );
         }
     }
 
@@ -59,7 +64,19 @@ int screenshot::shootRectangle()
         rg = new rectangleGrabber;
 
     if ( NULL != rg )
-        QTimer::singleShot ( 400, rg, SLOT ( start() ) );
+    {
+        currentGrabber = rg;
+        QTimer::singleShot ( 400, this, SLOT ( startCurrentGrabber() ) );
+    }
 
     return 1;
+}
+
+void screenshot::startCurrentGrabber()
+{
+    if ( NULL != currentGrabber )
+    {
+        currentGrabber->start();
+        currentGrabber = NULL;
+    }
 }

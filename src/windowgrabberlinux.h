@@ -19,10 +19,11 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include "grabberbase.h"
+#include "grabberbasedialog.h"
 
 class core;
 
-class windowGrabberLinux : public grabberBase
+class windowGrabberLinux : public grabberBaseDialog
 {
     Q_OBJECT
 public:

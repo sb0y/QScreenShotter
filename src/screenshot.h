@@ -26,14 +26,18 @@ public:
     int shootDesktop ( bool now = false );
     int shootRectangle();
 
-private:
     grabberBase *wg;
     grabberBase *dg;
     grabberBase *rg;
 
+private:
+
+    grabberBase *currentGrabber;
+
 signals:
 
 public slots:
+    void startCurrentGrabber();
 
 };
 

@@ -2,11 +2,12 @@
 #define DESKTOPGRABBER_H
 
 #include "grabberbase.h"
+#include "grabberbasedialog.h"
 #include <QMouseEvent>
 
 class core;
 
-class desktopGrabber : public grabberBase
+class desktopGrabber : public grabberBaseDialog
 {
     Q_OBJECT
 private:
@@ -15,9 +16,10 @@ public:
     virtual ~desktopGrabber();
     void prepare();
     void done();
+    QPixmap* pixmap();
 
 protected:
-    void mousePressEvent( QMouseEvent *event );
+    void mousePressEvent( QMouseEvent * event );
     void showEvent ( QShowEvent * );
     void hideEvent ( QHideEvent * );
 

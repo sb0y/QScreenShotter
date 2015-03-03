@@ -16,7 +16,7 @@
 #include "grabberbase.h"
 #include "qtthread.h"
 
-class windowGrabberWindows : public grabberBase
+class windowGrabberWindows : public QObject, public grabberBase//, public grabberBaseDialog
 {
     Q_OBJECT
 public:
@@ -24,12 +24,13 @@ public:
     QDialog *wnd;
 
     explicit windowGrabberWindows();
-    ~windowGrabberWindows();
+    virtual ~windowGrabberWindows();
 
     void start();
     void prepare();
     void done();
     void save();
+    QPixmap* pixmap();
 
     //LRESULT CALLBACK mouseProc (int nCode, WPARAM wParam, LPARAM lParam);
     void WINAPI myMouseLogger();
