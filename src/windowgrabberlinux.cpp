@@ -280,9 +280,9 @@ void windowGrabberLinux::start()
 
 void windowGrabberLinux::prepare()
 {
-    pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
+    _pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
 
-    label->setPixmap ( pixmap );
+    label->setPixmap ( _pixmap );
     splashWnd->show();
 
     XserverRegion region = XFixesCreateRegion ( QX11Info::display(), NULL, 0 );
@@ -327,7 +327,7 @@ void windowGrabberLinux::windowUnderCursor()
     //qDebug() << x << y << w << h;
 
     //QPixmap pm ( qApp->primaryScreen()->grabWindow ( child ) );
-    QPixmap pm ( pixmap.copy ( x, y, w, h ) );
+    QPixmap pm ( _pixmap.copy ( x, y, w, h ) );
 
     getWindow ( "main", MainWindow* )->setScreenPic ( pm );
     system::getCore()->setPixmap ( pm );
@@ -393,7 +393,7 @@ void windowGrabberLinux::mouseTick()
 
 void windowGrabberLinux::drawOnLayer ( int x, int y, int w, int h )
 {
-    QPixmap pm ( pixmap );
+    QPixmap pm ( _pixmap );
     painter.begin ( &pm );
     //painter.setRenderHint ( QPainter::Antialiasing, true );
     pen.setColor ( Qt::red );
@@ -414,5 +414,5 @@ void windowGrabberLinux::showEvent ( QShowEvent * )
 
 QPixmap* windowGrabberLinux::pixmap()
 {
-    return NULL;
+    return _pixmap;
 }

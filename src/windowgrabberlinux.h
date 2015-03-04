@@ -40,7 +40,7 @@ public:
 
     void drawOnLayer ( int x, int y, int w, int h );
 
-    QPixmap pixmap;
+    QPixmap _pixmap;
     QHBoxLayout *layout;
     QLabel *label;
 
