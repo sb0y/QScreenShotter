@@ -411,3 +411,8 @@ void windowGrabberLinux::showEvent ( QShowEvent * )
 {
 
 }
+
+QPixmap* windowGrabberLinux::pixmap()
+{
+    return NULL;
+}

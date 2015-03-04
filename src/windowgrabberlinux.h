@@ -32,9 +32,11 @@ public:
 
     explicit windowGrabberLinux();
     virtual ~windowGrabberLinux();
+
     void prepare();
     void windowUnderCursor();
     void done();
+    QPixmap *pixmap();
 
     void drawOnLayer ( int x, int y, int w, int h );
 
