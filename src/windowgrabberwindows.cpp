@@ -37,45 +37,43 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
     QPixmap pm;
 
-    if ( root != windowUnderCursor )
+    if ( root == windowUnderCursor )
     {
-        //child = windowUnderCursor;
-
-        WINDOWINFO wi;
-        GetWindowInfo ( windowUnderCursor, &wi );
-
-        cxWindowBorder = wi.cxWindowBorders;
-        cyWindowBorder = wi.cyWindowBorders;
-
-        //HDC childDC = GetDC ( child );
-
-        RECT windowRect;
-
-        GetWindowRect ( windowUnderCursor, &windowRect );
-
-        w = ( windowRect.right - windowRect.left );
-        h = ( windowRect.bottom - windowRect.top );
-
-        /*HDC targetDC = GetWindowDC ( windowUnderCursor );
-        HDC hDC = CreateCompatibleDC ( targetDC );
-
-        HBITMAP tempPic = CreateCompatibleBitmap ( targetDC, w, h );
-
-        HGDIOBJ oldPic = SelectObject ( hDC, tempPic );
-
-        BitBlt ( hDC, 0, 0, w, h, targetDC, 0, 0, SRCCOPY );
-        tempPic = ( HBITMAP ) SelectObject ( hDC, oldPic ); */
-
-        QPixmap screen = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
-        pm = screen.copy ( windowRect.left, windowRect.top, w, h );
-
-        //DeleteDC ( hDC );
-        //DeleteObject ( tempPic );
-        //ReleaseDC ( windowUnderCursor, targetDC );
-    } else {
-
-         pm = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
+        windowUnderCursor = GetDesktopWindow();
     }
+    //child = windowUnderCursor;
+
+    WINDOWINFO wi;
+    GetWindowInfo ( windowUnderCursor, &wi );
+
+    cxWindowBorder = wi.cxWindowBorders;
+    cyWindowBorder = wi.cyWindowBorders;
+
+    //HDC childDC = GetDC ( child );
+
+    RECT windowRect;
+
+    GetWindowRect ( windowUnderCursor, &windowRect );
+
+    w = ( windowRect.right - windowRect.left );
+    h = ( windowRect.bottom - windowRect.top );
+
+    /*HDC targetDC = GetWindowDC ( windowUnderCursor );
+      HDC hDC = CreateCompatibleDC ( targetDC );
+
+      HBITMAP tempPic = CreateCompatibleBitmap ( targetDC, w, h );
+
+      HGDIOBJ oldPic = SelectObject ( hDC, tempPic );
+
+      BitBlt ( hDC, 0, 0, w, h, targetDC, 0, 0, SRCCOPY );
+      tempPic = ( HBITMAP ) SelectObject ( hDC, oldPic ); */
+
+     QPixmap screen = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
+     pm = screen.copy ( windowRect.left, windowRect.top, w, h );
+
+     //DeleteDC ( hDC );
+     //DeleteObject ( tempPic );
+     //ReleaseDC ( windowUnderCursor, targetDC );
 
     getWindow ( "main", MainWindow* )->setScreenPic ( pm );
     system::getCore()->setPixmap ( pm );

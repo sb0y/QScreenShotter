@@ -21,6 +21,8 @@ unix:!mac:LIBS += -lX11 # TODO: remove
 unix:!mac:LIBS += -lxcb
 unix:!mac:LIBS += -lXfixes
 
+win32:LIBS += -lgdiplus
+
 include ( src/common.pri )
 
 RESOURCES += \

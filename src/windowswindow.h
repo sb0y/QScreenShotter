@@ -4,6 +4,10 @@
 #ifdef WIN32
     #define OEMRESOURCE
     #include <windows.h>
+    #include <objidl.h>
+    #include <gdiplus.h>
+    //using namespace Gdiplus;
+    //#pragma comment (lib,"Gdiplus.lib")
     #include <Winuser.h>
     #include <qt_windows.h>
     #include <QtWinExtras>
