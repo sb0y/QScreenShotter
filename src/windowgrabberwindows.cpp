@@ -5,22 +5,6 @@
 windowGrabberWindows::windowGrabberWindows()
 {
     wnd = NULL;
-    //wnd.setMouseTracking ( true );
-    //wnd.setWindowModality ( Qt::WindowModal );
-   // setFocusPolicy ( Qt::StrongFocus );
-    //wnd.setWindowFlags ( Qt::MSWindowsOwnDC | Qt::BypassWindowManagerHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint );
-
-    //move ( 0, 0 );
-    //setFixedSize(1000,1000);
-    //wnd.setFixedSize ( system::getCore()->screen.size().width(), system::getCore()->screen.size().height() );
-    //setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
-   // setParent(0); // Create TopLevel-Widget
-    //setAttribute(Qt::WA_NoSystemBackground, true);
-    //setAttribute(Qt::WA_TranslucentBackground, true);
-   // setAttribute(Qt::WA_PaintOnScreen);
-    //QTthread *t = new QTthread;
-    //t->setWorker ( new mouseSpy ( this ) );
-    //t->start();
 }
 
 windowGrabberWindows::~windowGrabberWindows()
@@ -30,8 +14,7 @@ windowGrabberWindows::~windowGrabberWindows()
 
 void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 {
-    HWND child;
-    int y,x;
+    int y, x;
     uint w, h;
     UINT cxWindowBorder, cyWindowBorder;
 
@@ -40,6 +23,7 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     pointCursor.x = qpointCursor.x();
     pointCursor.y = qpointCursor.y();
     HWND windowUnderCursor = WindowFromPoint ( pointCursor );
+    HWND root = GetAncestor ( windowUnderCursor, GA_ROOT );
 
     if ( includeDecorations )
     {
@@ -47,40 +31,51 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
         if ( ( style & WS_CHILD ) != 0 )
         {
-            windowUnderCursor = GetAncestor ( windowUnderCursor, GA_ROOT );
+            windowUnderCursor = root;
         }
     }
 
-    child = windowUnderCursor;
+    QPixmap pm;
 
-    WINDOWINFO wi;
-    GetWindowInfo ( child, &wi );
+    if ( root != windowUnderCursor )
+    {
+        //child = windowUnderCursor;
 
-    RECT r;
-    GetWindowRect ( child, &r );
-    x = r.left;
-    y = r.top;
-    w = r.right - r.left;
-    h = r.bottom - r.top;
-    cxWindowBorder = wi.cxWindowBorders;
-    cyWindowBorder = wi.cyWindowBorders;
+        WINDOWINFO wi;
+        GetWindowInfo ( windowUnderCursor, &wi );
 
-    //HDC childDC = GetDC ( child );
+        cxWindowBorder = wi.cxWindowBorders;
+        cyWindowBorder = wi.cyWindowBorders;
 
-    RECT windowRect;
-    GetWindowRect ( child, &windowRect);
-    w = windowRect.right - windowRect.left;
-    h = windowRect.bottom - windowRect.top;
-    HDC targetDC = GetWindowDC ( child );
-    HDC hDC = CreateCompatibleDC ( targetDC );
-    HBITMAP tempPic = CreateCompatibleBitmap ( targetDC, w, h );
-    HGDIOBJ oldPic = SelectObject ( hDC, tempPic );
-    BitBlt ( hDC, 0, 0, w, h, targetDC, 0, 0, SRCCOPY );
-    tempPic = ( HBITMAP ) SelectObject ( hDC, oldPic );
-    QPixmap pm ( QtWin::fromHBITMAP ( tempPic ) );
+        //HDC childDC = GetDC ( child );
 
-    DeleteDC ( hDC );
-    ReleaseDC ( child, targetDC );
+        RECT windowRect;
+
+        GetWindowRect ( windowUnderCursor, &windowRect );
+
+        w = ( windowRect.right - windowRect.left );
+        h = ( windowRect.bottom - windowRect.top );
+
+        /*HDC targetDC = GetWindowDC ( windowUnderCursor );
+        HDC hDC = CreateCompatibleDC ( targetDC );
+
+        HBITMAP tempPic = CreateCompatibleBitmap ( targetDC, w, h );
+
+        HGDIOBJ oldPic = SelectObject ( hDC, tempPic );
+
+        BitBlt ( hDC, 0, 0, w, h, targetDC, 0, 0, SRCCOPY );
+        tempPic = ( HBITMAP ) SelectObject ( hDC, oldPic ); */
+
+        QPixmap screen = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
+        pm = screen.copy ( windowRect.left, windowRect.top, w, h );
+
+        //DeleteDC ( hDC );
+        //DeleteObject ( tempPic );
+        //ReleaseDC ( windowUnderCursor, targetDC );
+    } else {
+
+         pm = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
+    }
 
     getWindow ( "main", MainWindow* )->setScreenPic ( pm );
     system::getCore()->setPixmap ( pm );
