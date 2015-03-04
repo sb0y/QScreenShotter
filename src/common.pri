@@ -25,7 +25,7 @@ HEADERS  += src/mainwindow.h \
     src/customframe.h \
     src/desktopgrabber.h \
     src/qtthread.h \
-    src/grabberbasedialog.h
+    src/grabberbasedialog.h \
 
 unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \
@@ -39,11 +39,14 @@ unix:!mac:SOURCES += src/windowgrabberlinux.cpp \
 
 win32:HEADERS += src/windowgrabberwindows.h \
                 src/neweventfilter.h \
-                src/mousespy.h
+                src/mousespy.h \
+                src/windowswindow.h
 
 win32:SOURCES += src/windowgrabberwindows.cpp \
                 src/neweventfilter.cpp \
-                src/mousespy.cpp
+                src/mousespy.cpp \
+                src/windowswindow.cpp
+
 
 FORMS    += src/mainwindow.ui \
     src/aboutdialog.ui

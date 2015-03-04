@@ -1,4 +1,5 @@
 #include "windowgrabberwindows.h"
+#include "windowswindow.h"
 #include "core.h"
 
 windowGrabberWindows::windowGrabberWindows()
@@ -27,8 +28,7 @@ windowGrabberWindows::~windowGrabberWindows()
     delete wnd;
 }
 
-static
-void windowUnderCursor ( bool includeDecorations = true )
+void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 {
     HWND child;
     int y,x;
@@ -94,9 +94,10 @@ void windowGrabberWindows::save()
 void windowGrabberWindows::done()
 {
     QApplication::restoreOverrideCursor();
-    CloseWindow ( ( HWND ) wnd->winId() );
     system::getCore()->toggleVisability();
+    wnd->close();
     delete wnd;
+    wnd = NULL;
 }
 
 void windowGrabberWindows::start()
@@ -114,7 +115,9 @@ void windowGrabberWindows::prepare()
        wnd = NULL;
    }
 
-   wnd = new QDialog ( NULL, Qt::MSWindowsOwnDC | Qt::BypassWindowManagerHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint );
+   wnd = new windowsWindow;
+   wnd->setOwner ( this );
+   wnd->setWindowFlags ( Qt::MSWindowsOwnDC | Qt::BypassWindowManagerHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint );
    wnd->setFixedSize ( system::getCore()->screen.size().width(), system::getCore()->screen.size().height() );
    wnd->setWindowModality ( Qt::WindowModal );
    wnd->setMouseTracking ( true );
@@ -135,28 +138,6 @@ void windowGrabberWindows::prepare()
    //raise();
    //activateWindow();
    //grabMouse();
-}
-
-void windowGrabberWindows::mouseMoveEvent ( QMouseEvent *e )
-{
-    qDebug() << "mouse move";
-    e->ignore();
-}
-
-void windowGrabberWindows::mousePressEvent ( QMouseEvent *e )
-{
-    qDebug() << "mouse press";
-    e->ignore();
-    ShowWindow ( ( HWND ) wnd->winId(), SW_HIDE );
-    windowUnderCursor();
-    done();
-}
-
-bool windowGrabberWindows::eventFilter( QObject *o, QEvent *e )
-{
-    qDebug() << "here";
-    e->ignore();
-    return false;
 }
 
 QPixmap* windowGrabberWindows::pixmap()

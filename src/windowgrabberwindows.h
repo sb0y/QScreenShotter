@@ -15,13 +15,16 @@
 #endif
 #include "grabberbase.h"
 #include "qtthread.h"
+#include "windowswindow.h"
+
+class windowsWindow;
 
 class windowGrabberWindows : public QObject, public grabberBase//, public grabberBaseDialog
 {
     Q_OBJECT
 public:
 
-    QDialog *wnd;
+    windowsWindow *wnd;
 
     explicit windowGrabberWindows();
     virtual ~windowGrabberWindows();
@@ -32,13 +35,14 @@ public:
     void save();
     QPixmap* pixmap();
 
+    void windowUnderCursor ( bool includeDecorations = true );
+
     //LRESULT CALLBACK mouseProc (int nCode, WPARAM wParam, LPARAM lParam);
     void WINAPI myMouseLogger();
 
 protected:
     void mousePressEvent( QMouseEvent * );
     void mouseMoveEvent ( QMouseEvent * );
-    bool eventFilter ( QObject *, QEvent * );
    // void showEvent ( QShowEvent * );
 
 signals:
