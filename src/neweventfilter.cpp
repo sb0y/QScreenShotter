@@ -17,6 +17,7 @@ bool NewEventFilter::nativeEventFilter ( const QByteArray &eventType, void *mess
     if ( eventType == "windows_generic_MSG" || eventType == "windows_dispatcher_MSG" )
     {
         const MSG &msg = *static_cast < MSG* > ( message );
+        HWND wnd;
         /*HCURSOR cursor[10];
         cursor[10] = NULL;*/
 
@@ -48,6 +49,35 @@ bool NewEventFilter::nativeEventFilter ( const QByteArray &eventType, void *mess
 
             case WM_MOUSEACTIVATE:
                 //qDebug() << "here";
+            break;
+
+            case WM_MOUSEMOVE:
+            {
+                if ( NULL != system::getCore()->sc->wg )
+                {
+                    wnd = (HWND)system::getCore()->sc->wg->winId();
+
+                    if ( wnd == msg.hwnd )
+                    {
+                        return false;
+                    }
+                }
+
+                break;
+            }
+
+            case WM_NCHITTEST:
+
+            if ( NULL != system::getCore()->sc->wg )
+            {
+                wnd = (HWND)system::getCore()->sc->wg->winId();
+
+                if ( wnd == msg.hwnd )
+                {
+                    return false;
+                }
+            }
+
             break;
 
             default:

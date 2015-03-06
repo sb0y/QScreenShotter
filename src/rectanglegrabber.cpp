@@ -178,3 +178,8 @@ QPixmap* rectangleGrabber::pixmap()
 {
     return &_pixmap;
 }
+
+WId rectangleGrabber::winId()
+{
+    return QDialog::winId();
+}

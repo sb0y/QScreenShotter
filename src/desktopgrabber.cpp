@@ -64,3 +64,8 @@ QPixmap* desktopGrabber::pixmap()
 {
     return NULL;
 }
+
+WId desktopGrabber::winId()
+{
+    return QDialog::winId();
+}

@@ -26,6 +26,9 @@ public:
     explicit windowsWindow();
     ~windowsWindow();
 
+    int mm;
+    HWND highlightedWindow;
+
     windowGrabberWindows *owner;
 
     void setOwner ( windowGrabberWindows *w );
@@ -33,6 +36,12 @@ public:
     void mouseMoveEvent ( QMouseEvent *e );
     void mousePressEvent ( QMouseEvent *e );
     bool eventFilter ( QObject *o, QEvent *e );
+    bool drawRectangle (int x, int y, int w, int h );
+
+    void mouseTick();
+
+protected:
+    void timerEvent(QTimerEvent *event);
 
 signals:
 

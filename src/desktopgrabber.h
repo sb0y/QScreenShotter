@@ -17,6 +17,7 @@ public:
     void prepare();
     void done();
     QPixmap* pixmap();
+    WId winId();
 
 protected:
     void mousePressEvent( QMouseEvent * event );

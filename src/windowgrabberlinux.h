@@ -37,6 +37,7 @@ public:
     void windowUnderCursor();
     void done();
     QPixmap *pixmap();
+    WId winId();
 
     void drawOnLayer ( int x, int y, int w, int h );
 

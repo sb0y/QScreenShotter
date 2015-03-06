@@ -29,6 +29,7 @@ public:
     void save();
     void prepare();
     QPixmap* pixmap();
+    WId winId();
 
     bool isBannerShown;
     void drawScreen ( bool banner = true );

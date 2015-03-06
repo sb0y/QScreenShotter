@@ -20,6 +20,7 @@ public:
 
     virtual void start() = 0;
     virtual QPixmap* pixmap() = 0;
+    virtual WId winId() = 0;
 
 protected:
 };

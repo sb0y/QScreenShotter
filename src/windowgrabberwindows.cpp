@@ -1,15 +1,29 @@
 #include "windowgrabberwindows.h"
 #include "windowswindow.h"
 #include "core.h"
+#include <iostream>
+
+windowGrabberWindows *windowGrabberWindows::self;
 
 windowGrabberWindows::windowGrabberWindows()
 {
     wnd = NULL;
+    self = this;
+    getAllAvailableWindows();
 }
 
 windowGrabberWindows::~windowGrabberWindows()
 {
     delete wnd;
+
+    for ( unsigned int i = 0; windows.size() > i; ++i )
+    {
+        delete windows [ i ].rect;
+    }
+
+    //std::for_each ( windows.begin(), windows.end(), std::default_delete < RECT >() );
+
+    windows.clear();
 }
 
 void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
@@ -22,7 +36,9 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     QPoint qpointCursor = QCursor::pos();
     pointCursor.x = qpointCursor.x();
     pointCursor.y = qpointCursor.y();
+
     HWND windowUnderCursor = WindowFromPoint ( pointCursor );
+
     HWND root = GetAncestor ( windowUnderCursor, GA_ROOT );
 
     if ( includeDecorations )
@@ -37,10 +53,10 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
     QPixmap pm;
 
-    if ( root == windowUnderCursor )
-    {
-        windowUnderCursor = GetDesktopWindow();
-    }
+    //if ( root == windowUnderCursor )
+    //{
+      //  windowUnderCursor = GetDesktopWindow();
+    //}
     //child = windowUnderCursor;
 
     WINDOWINFO wi;
@@ -57,6 +73,10 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
     w = ( windowRect.right - windowRect.left );
     h = ( windowRect.bottom - windowRect.top );
+    x = windowRect.left;
+    y = windowRect.top;
+
+    qDebug() << "taked: " << x << y << w << h;
 
     /*HDC targetDC = GetWindowDC ( windowUnderCursor );
       HDC hDC = CreateCompatibleDC ( targetDC );
@@ -69,7 +89,7 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
       tempPic = ( HBITMAP ) SelectObject ( hDC, oldPic ); */
 
      QPixmap screen = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
-     pm = screen.copy ( windowRect.left, windowRect.top, w, h );
+     pm = screen.copy ( x, y, w, h );
 
      //DeleteDC ( hDC );
      //DeleteObject ( tempPic );
@@ -110,17 +130,23 @@ void windowGrabberWindows::prepare()
 
    wnd = new windowsWindow;
    wnd->setOwner ( this );
-   wnd->setWindowFlags ( Qt::MSWindowsOwnDC | Qt::BypassWindowManagerHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint );
+   //wnd->setAttribute ( Qt::WA_TransparentForMouseEvents, true );
+   wnd->setWindowFlags ( Qt::BypassWindowManagerHint | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint );
    wnd->setFixedSize ( system::getCore()->screen.size().width(), system::getCore()->screen.size().height() );
    wnd->setWindowModality ( Qt::WindowModal );
+   wnd->setFocusPolicy ( Qt::NoFocus );
    wnd->setMouseTracking ( true );
 
    // winhack
    // window unactivable and unfocusable when clicking
    HWND winHandle = ( HWND ) wnd->winId();
+   //HDC hdc = GetDC ( winHandle ); // Get its DC.
+   //EnableWindow ( winHandle, false );
    ShowWindow ( winHandle, SW_HIDE );
 
-   SetWindowLong ( winHandle, GWL_EXSTYLE, GetWindowLong ( winHandle, GWL_EXSTYLE ) | WS_EX_NOACTIVATE | WS_EX_APPWINDOW | WS_EX_TRANSPARENT );
+   LONG styles = GetWindowLong ( winHandle, GWL_EXSTYLE );
+
+   SetWindowLong ( winHandle, GWL_EXSTYLE, styles | WS_EX_NOACTIVATE | WS_EX_APPWINDOW | WS_EX_TRANSPARENT );
    SetWindowPos ( winHandle, HWND_TOPMOST, 0, 0, 0, 0, SWP_SHOWWINDOW | SWP_NOSIZE | SWP_NOMOVE ); // window-positioning options
    ShowWindow ( winHandle, SW_SHOW );
 
@@ -136,6 +162,46 @@ void windowGrabberWindows::prepare()
 QPixmap* windowGrabberWindows::pixmap()
 {
     return NULL;
+}
+
+WId windowGrabberWindows::winId()
+{
+    if ( NULL == wnd )
+    {
+        return NULL;
+    }
+
+    return wnd->winId();
+}
+
+BOOL CALLBACK windowGrabberWindows::EnumWindowsProc ( HWND hwnd, LPARAM lParam )
+{
+    if ( IsWindowVisible ( hwnd ) && IsWindowEnabled ( hwnd ) )
+    {
+        wchar_t class_name [ 80 ];
+        wchar_t title [ 80 ];
+        GetClassName ( hwnd, class_name, sizeof ( class_name ) );
+        GetWindowText ( hwnd, title, sizeof ( title ) );
+
+        if ( _wcsicmp ( class_name, L"Shell_TrayWnd" ) &&
+             _wcsicmp ( class_name, L"Progman" ) &&
+             _wcsicmp ( class_name, L"EdgeUiInputTopWndClass" ) )
+        {
+            //std::wcout << "Window title: " << title << std::endl;
+            //std::wcout << "Class name: " << class_name << std::endl;
+
+            RECT *rect = new RECT;
+            GetWindowRect ( hwnd, rect );
+            self->windows.push_back ( winInfo ( hwnd, rect ) );
+        }
+    }
+
+   return TRUE;
+}
+
+void windowGrabberWindows::getAllAvailableWindows()
+{
+    EnumWindows ( EnumWindowsProc, NULL );
 }
 
 /*void windowGrabberWindows::showEvent ( QShowEvent * )

@@ -416,3 +416,8 @@ QPixmap* windowGrabberLinux::pixmap()
 {
     return &_pixmap;
 }
+
+WId windowGrabberLinux::winId()
+{
+    return QDialog::winId();
+}
