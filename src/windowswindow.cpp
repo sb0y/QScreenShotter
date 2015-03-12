@@ -57,8 +57,17 @@ void windowsWindow::mouseTick()
     pointCursor.x = qpointCursor.x();
     pointCursor.y = qpointCursor.y();
 
+    HWND dsk = GetDesktopWindow();
+
     for ( int i = 0; owner->windows.size() > i; ++i )
     {
+        windowUnderCursor = NULL;
+
+        if ( dsk == owner->windows [ i ].winId )
+        {
+            continue;
+        }
+
         if ( PtInRect ( owner->windows [ i ].rect, pointCursor ) )
         {
             windowUnderCursor = owner->windows [ i ].winId;
@@ -67,18 +76,21 @@ void windowsWindow::mouseTick()
         }
     }
 
-    w = ( rect->right - rect->left );
-    h = ( rect->bottom - rect->top );
-    x = rect->left;
-    y = rect->top;
-
-    //qDebug() << x << y << w << h;
-
-    if ( highlightedWindow != windowUnderCursor )
+    if ( NULL != windowUnderCursor )
     {
-        if ( drawRectangle ( x, y, w, h ) )
+        w = ( rect->right - rect->left );
+        h = ( rect->bottom - rect->top );
+        x = rect->left;
+        y = rect->top;
+
+        //qDebug() << x << y << w << h;
+
+        if ( highlightedWindow != windowUnderCursor )
         {
-            highlightedWindow = windowUnderCursor;
+            if ( drawRectangle ( x, y, w, h ) )
+            {
+                highlightedWindow = windowUnderCursor;
+            }
         }
     }
 }
