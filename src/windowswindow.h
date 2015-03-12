@@ -28,6 +28,7 @@ public:
 
     int mm;
     HWND highlightedWindow;
+    RECT highlightedWindowRECT;
 
     windowGrabberWindows *owner;
 
@@ -37,6 +38,7 @@ public:
     void mousePressEvent ( QMouseEvent *e );
     bool eventFilter ( QObject *o, QEvent *e );
     bool drawRectangle (int x, int y, int w, int h );
+    void eraseRectangle();
 
     void mouseTick();
 

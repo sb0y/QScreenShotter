@@ -13,7 +13,7 @@ windowsWindow::~windowsWindow()
 
 }
 
-bool windowsWindow::drawRectangle ( int x, int y, int w, int h )
+bool windowsWindow::drawRectangle (int x, int y, int w, int h )
 {
     Gdiplus::GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;
@@ -27,12 +27,10 @@ bool windowsWindow::drawRectangle ( int x, int y, int w, int h )
     //rec = location
     Gdiplus::Rect rec ( x, y, w, h );
     Gdiplus::Status st = graphics.DrawRectangle ( &pen, rec );
-    BOOL bl = FlashWindow ( dsk, FALSE );
-    RedrawWindow ( dsk, NULL, NULL, RDW_ERASENOW | RDW_UPDATENOW );
 
     ReleaseDC ( NULL, hdc );
 
-    return bl;
+    return true;
 }
 
 void windowsWindow::timerEvent ( QTimerEvent *e )
@@ -76,23 +74,66 @@ void windowsWindow::mouseTick()
         }
     }
 
+    RECT rectUpd;
+
     if ( NULL != windowUnderCursor )
     {
-        w = ( rect->right - rect->left );
-        h = ( rect->bottom - rect->top );
+        w = rect->right - rect->left;
+        h = rect->bottom - rect->top;
         x = rect->left;
         y = rect->top;
+
 
         //qDebug() << x << y << w << h;
 
         if ( highlightedWindow != windowUnderCursor )
         {
+            if ( NULL != highlightedWindow )
+            {
+                eraseRectangle();
+            }
+
             if ( drawRectangle ( x, y, w, h ) )
             {
                 highlightedWindow = windowUnderCursor;
+                highlightedWindowRECT = *rect;
+                //SetActiveWindow ( windowUnderCursor );
+                //SetFocus ( windowUnderCursor );
             }
         }
-    }
+    } else {
+
+        if ( NULL != highlightedWindow )
+        {
+            eraseRectangle();
+        }
+   }
+}
+
+void windowsWindow::eraseRectangle()
+{
+    if ( NULL == highlightedWindow )
+        return;
+
+    RECT rectUpd;
+
+    rectUpd = highlightedWindowRECT;
+
+    rectUpd.left -= 2;
+    rectUpd.right += 2;
+    rectUpd.top -= 2;
+    rectUpd.bottom += 2;
+
+    //RedrawWindow ( highlightedWindow, rect, NULL, RDW_ERASE|RDW_INVALIDATE|RDW_ALLCHILDREN );
+    //RedrawWindow ( NULL, rect, NULL, RDW_ERASENOW|RDW_ERASE|RDW_INVALIDATE|RDW_ALLCHILDREN );
+
+    RedrawWindow ( highlightedWindow, &rectUpd, NULL, RDW_ERASE | RDW_INVALIDATE | RDW_ALLCHILDREN );
+    RedrawWindow ( NULL, &rectUpd, NULL, RDW_ERASENOW | RDW_ERASE | RDW_INVALIDATE | RDW_ALLCHILDREN );
+
+    FlashWindow ( highlightedWindow, FALSE );
+
+    highlightedWindow = NULL;
+    highlightedWindowRECT = {0,0,0,0};
 }
 
 void windowsWindow::mouseMoveEvent ( QMouseEvent *e )

@@ -58,6 +58,7 @@ public:
     //LRESULT CALLBACK mouseProc (int nCode, WPARAM wParam, LPARAM lParam);
     void WINAPI myMouseLogger();
     void getAllAvailableWindows();
+    void clearTrackedWindows();
 
     static BOOL CALLBACK EnumWindowsProc ( HWND hWnd, LPARAM lParam );
 

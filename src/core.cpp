@@ -35,6 +35,7 @@ core::~core()
     }
 
     delete trayMenu;
+    delete trayIcon;
     delete sc;
 }
 

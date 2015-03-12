@@ -9,13 +9,16 @@ windowGrabberWindows::windowGrabberWindows()
 {
     wnd = NULL;
     self = this;
-    getAllAvailableWindows();
 }
 
 windowGrabberWindows::~windowGrabberWindows()
 {
     delete wnd;
+    clearTrackedWindows();
+}
 
+void windowGrabberWindows::clearTrackedWindows()
+{
     for ( unsigned int i = 0; windows.size() > i; ++i )
     {
         delete windows [ i ].rect;
@@ -121,6 +124,9 @@ void windowGrabberWindows::start()
 void windowGrabberWindows::prepare()
 {
    //exec();
+
+   clearTrackedWindows();
+   getAllAvailableWindows();
 
    if ( wnd != NULL )
    {
