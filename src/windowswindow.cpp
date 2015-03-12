@@ -76,18 +76,15 @@ void windowsWindow::mouseTick()
 
     if ( NULL != windowUnderCursor )
     {
+        if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
+        {
+            SystemParametersInfo ( SPI_GETWORKAREA, 0, rect, 0 );
+        }
+
         w = rect->right - rect->left;
         h = rect->bottom - rect->top;
         x = rect->left;
         y = rect->top;
-
-        if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
-        {
-            //qDebug() << "here";
-            //windowUnderCursor = GetTopWindow ( windowUnderCursor );
-
-            h -= 7;
-        }
 
         //qDebug() << x << y << w << h;
 

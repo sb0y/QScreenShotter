@@ -68,15 +68,16 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
     GetWindowRect ( windowUnderCursor, &windowRect );
 
+    if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
+    {
+        SystemParametersInfo ( SPI_GETWORKAREA, 0, &windowRect, 0 );
+    }
+
     w = windowRect.right - windowRect.left;
     h = windowRect.bottom - windowRect.top;
     x = windowRect.left;
     y = windowRect.top;
 
-    if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
-    {
-        h -= 7;
-    }
 
     qDebug() << "taked: " << x << y << w << h;
 
