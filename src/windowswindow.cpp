@@ -74,8 +74,6 @@ void windowsWindow::mouseTick()
         }
     }
 
-    RECT rectUpd;
-
     if ( NULL != windowUnderCursor )
     {
         w = rect->right - rect->left;
@@ -83,6 +81,13 @@ void windowsWindow::mouseTick()
         x = rect->left;
         y = rect->top;
 
+        if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
+        {
+            //qDebug() << "here";
+            //windowUnderCursor = GetTopWindow ( windowUnderCursor );
+
+            h -= 7;
+        }
 
         //qDebug() << x << y << w << h;
 

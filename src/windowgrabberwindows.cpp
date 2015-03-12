@@ -56,12 +56,6 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
     QPixmap pm;
 
-    //if ( root == windowUnderCursor )
-    //{
-      //  windowUnderCursor = GetDesktopWindow();
-    //}
-    //child = windowUnderCursor;
-
     WINDOWINFO wi;
     GetWindowInfo ( windowUnderCursor, &wi );
 
@@ -74,10 +68,15 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
     GetWindowRect ( windowUnderCursor, &windowRect );
 
-    w = ( windowRect.right - windowRect.left );
-    h = ( windowRect.bottom - windowRect.top );
+    w = windowRect.right - windowRect.left;
+    h = windowRect.bottom - windowRect.top;
     x = windowRect.left;
     y = windowRect.top;
+
+    if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
+    {
+        h -= 7;
+    }
 
     qDebug() << "taked: " << x << y << w << h;
 
