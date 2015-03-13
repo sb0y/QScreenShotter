@@ -75,7 +75,6 @@ void XWindowRectangle::waitEvent()
         {
             case XCB_EXPOSE:
             {
-                qDebug() << "here";
                 xcb_expose_event_t *expose = (xcb_expose_event_t *)event;
                 redraw();
                 break;
@@ -90,7 +89,6 @@ void XWindowRectangle::waitEvent()
             case XCB_MOTION_NOTIFY:
             {
                 xcb_motion_notify_event_t *move = (xcb_motion_notify_event_t *)event;
-                qDebug() << "here";
             }
 
             default:

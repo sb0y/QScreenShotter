@@ -29,12 +29,12 @@ HEADERS  += src/mainwindow.h \
 
 unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \
-    src/xwindowrectangle.h \
+    #src/xwindowrectangle.h \
     src/neweventfilter.h
 
 unix:!mac:SOURCES += src/windowgrabberlinux.cpp \
     src/x11info.cpp \
-    src/xwindowrectangle.cpp \
+    #src/xwindowrectangle.cpp \
     src/neweventfilter.cpp
 
 win32:HEADERS += src/windowgrabberwindows.h \
