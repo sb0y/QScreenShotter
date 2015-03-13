@@ -14,7 +14,8 @@ MainWindow::MainWindow ( QWidget *parent ) :
 
     //qApp->installEventFilter ( this );
     setMouseTracking ( true );
-    ui->shootMode->setFixedWidth ( 19 );
+    ui->shootMode->setFixedWidth ( 20 );
+    ui->shootMode->setFixedHeight ( 21 );
     ui->shootMode->view()->setMinimumWidth ( 150 );
 
     core *c = system::getCore();

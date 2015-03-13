@@ -12,7 +12,7 @@ greaterThan ( QT_MAJOR_VERSION, 4 )
     win32:QT += winextras
 }
 
-unix:QMAKE_CXXFLAGS += -std=c++11 -std=gnu++11
+#unix:QMAKE_CXXFLAGS += -std=c++11 -std=gnu++11
 
 unix:!mac:DEFINES += HAVE_X11
 QT += core gui
