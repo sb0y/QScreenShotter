@@ -1,7 +1,7 @@
 #include "grabberbasedialog.h"
 
-grabberBaseDialog::grabberBaseDialog() //:
-    //QDialog ( NULL, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint | Qt::Popup )
+grabberBaseDialog::grabberBaseDialog() :
+    QDialog ( NULL, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint | Qt::Popup )
 {
     setMouseTracking ( true );
     setWindowModality ( Qt::WindowModal );
