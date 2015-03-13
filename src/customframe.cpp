@@ -23,11 +23,11 @@ void customFrame::paintEvent ( QPaintEvent *e )
      painter.drawRect(rect());
 }
 
-void customFrame::repaint(int x, int y, int w, int h)
+void customFrame::repaint ( int x, int y, int w, int h )
 {
     qDebug() << "repaint";
     QPainter painter(this);
     painter.setPen(Qt::red);
-    painter.drawRect ( 50, 50, 200, 200 );
+    painter.drawRect ( x, y, w, h );
     painter.end();
 }

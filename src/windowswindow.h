@@ -16,6 +16,7 @@
 #include <QDialog>
 #include "windowgrabberwindows.h"
 #include <assert.h>
+#include <iostream>
 
 class windowGrabberWindows;
 

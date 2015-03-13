@@ -22,7 +22,7 @@ LRESULT CALLBACK mouseProc (int nCode, WPARAM wParam, LPARAM lParam)
         {
             printf( "clicked" );
         }
-        printf("Mouse position X = %d  Mouse Position Y = %d\n", pMouseStruct->pt.x,pMouseStruct->pt.y);
+        printf("Mouse position X = %ld  Mouse Position Y = %ld\n", pMouseStruct->pt.x,pMouseStruct->pt.y);
     }
 
     return CallNextHookEx(hMouseHook, nCode, wParam, lParam);

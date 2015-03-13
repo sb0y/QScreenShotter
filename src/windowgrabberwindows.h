@@ -32,6 +32,8 @@ public:
     explicit windowGrabberWindows();
     virtual ~windowGrabberWindows();
 
+    QPixmap _pixmap;
+
     struct winInfo
     {
         winInfo ( HWND wid, RECT *r )

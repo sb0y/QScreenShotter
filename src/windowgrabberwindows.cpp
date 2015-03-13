@@ -33,7 +33,6 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 {
     int y, x;
     uint w, h;
-    UINT cxWindowBorder, cyWindowBorder;
 
     POINT pointCursor;
     QPoint qpointCursor = QCursor::pos();
@@ -41,7 +40,6 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     pointCursor.y = qpointCursor.y();
 
     HWND windowUnderCursor = WindowFromPoint ( pointCursor );
-
     HWND root = GetAncestor ( windowUnderCursor, GA_ROOT );
 
     if ( includeDecorations )
@@ -59,8 +57,8 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     WINDOWINFO wi;
     GetWindowInfo ( windowUnderCursor, &wi );
 
-    cxWindowBorder = wi.cxWindowBorders;
-    cyWindowBorder = wi.cyWindowBorders;
+    //cxWindowBorder = wi.cxWindowBorders;
+    //cyWindowBorder = wi.cyWindowBorders;
 
     //HDC childDC = GetDC ( child );
 
@@ -78,7 +76,6 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     x = windowRect.left;
     y = windowRect.top;
 
-
     qDebug() << "taked: " << x << y << w << h;
 
     /*HDC targetDC = GetWindowDC ( windowUnderCursor );
@@ -91,8 +88,7 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
       BitBlt ( hDC, 0, 0, w, h, targetDC, 0, 0, SRCCOPY );
       tempPic = ( HBITMAP ) SelectObject ( hDC, oldPic ); */
 
-     QPixmap screen = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
-     pm = screen.copy ( x, y, w, h );
+     pm = _pixmap.copy ( x, y, w, h );
 
      //DeleteDC ( hDC );
      //DeleteObject ( tempPic );
@@ -127,6 +123,8 @@ void windowGrabberWindows::prepare()
 
    clearTrackedWindows();
    getAllAvailableWindows();
+
+   _pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
 
    if ( wnd != NULL )
    {
@@ -167,12 +165,12 @@ void windowGrabberWindows::prepare()
 
 QPixmap* windowGrabberWindows::pixmap()
 {
-    return NULL;
+    return &_pixmap;
 }
 
 WId windowGrabberWindows::winId()
 {
-    if ( NULL == wnd )
+    if ( wnd == NULL )
     {
         return NULL;
     }
@@ -182,6 +180,8 @@ WId windowGrabberWindows::winId()
 
 BOOL CALLBACK windowGrabberWindows::EnumWindowsProc ( HWND hwnd, LPARAM lParam )
 {
+    Q_UNUSED ( lParam );
+
     if ( IsWindowVisible ( hwnd ) && IsWindowEnabled ( hwnd ) )
     {
         wchar_t class_name [ 80 ];

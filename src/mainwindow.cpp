@@ -50,9 +50,9 @@ int MainWindow::init ( core *core )
     return 1;
 }
 
-void MainWindow::mouseMoveEvent ( QMouseEvent *e )
+void MainWindow::mouseMoveEvent ( QMouseEvent * )
 {
-    qDebug() << "here";
+    //qDebug() << "here";
 }
 
 void MainWindow::setMainAction ( enum MainWindow::actions action )

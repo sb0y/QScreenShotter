@@ -12,6 +12,8 @@ greaterThan ( QT_MAJOR_VERSION, 4 )
     win32:QT += winextras
 }
 
+unix:QMAKE_CXXFLAGS += -std=c++11 -std=gnu++11
+
 unix:!mac:DEFINES += HAVE_X11
 QT += core gui
 
@@ -21,7 +23,7 @@ unix:!mac:LIBS += -lX11 # TODO: remove
 unix:!mac:LIBS += -lxcb
 unix:!mac:LIBS += -lXfixes
 
-win32:LIBS += -lgdiplus -lmsimg32
+win32:LIBS += -lgdiplus# -lmsimg32
 
 include ( src/common.pri )
 

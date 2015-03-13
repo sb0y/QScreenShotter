@@ -17,8 +17,7 @@ bool windowsWindow::drawRectangle (int x, int y, int w, int h )
 {
     Gdiplus::GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;
-    //erase the rectangle on desktop
-    HWND dsk = GetDesktopWindow();
+    //HWND dsk = GetDesktopWindow();
 
     Gdiplus::GdiplusStartup ( &gdiplusToken, &gdiplusStartupInput, NULL );
     HDC hdc = GetDC ( NULL );
@@ -30,7 +29,7 @@ bool windowsWindow::drawRectangle (int x, int y, int w, int h )
 
     ReleaseDC ( NULL, hdc );
 
-    return true;
+    return ( (bool) st );
 }
 
 void windowsWindow::timerEvent ( QTimerEvent *e )
@@ -57,7 +56,10 @@ void windowsWindow::mouseTick()
 
     HWND dsk = GetDesktopWindow();
 
-    for ( int i = 0; owner->windows.size() > i; ++i )
+    WINDOWPLACEMENT wp;
+    wp.length = sizeof ( wp );
+
+    for ( unsigned int i = 0; owner->windows.size() > i; ++i )
     {
         windowUnderCursor = NULL;
 
@@ -76,7 +78,12 @@ void windowsWindow::mouseTick()
 
     if ( NULL != windowUnderCursor )
     {
-        if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
+        //qDebug() << windowUnderCursor;
+        //qDebug() << GetAncestor ( windowUnderCursor, GA_ROOT );
+
+        GetWindowPlacement ( windowUnderCursor, &wp );
+
+        if ( wp.showCmd == SW_SHOWMAXIMIZED )
         {
             SystemParametersInfo ( SPI_GETWORKAREA, 0, rect, 0 );
         }
@@ -135,7 +142,7 @@ void windowsWindow::eraseRectangle()
     FlashWindow ( highlightedWindow, FALSE );
 
     highlightedWindow = NULL;
-    highlightedWindowRECT = {0,0,0,0};
+    //highlightedWindowRECT = { 0, 0, 0, 0 };
 }
 
 void windowsWindow::mouseMoveEvent ( QMouseEvent *e )

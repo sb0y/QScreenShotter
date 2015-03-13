@@ -8,6 +8,8 @@ NewEventFilter::NewEventFilter()
 
 bool NewEventFilter::nativeEventFilter ( const QByteArray &eventType, void *message, long *l ) Q_DECL_OVERRIDE
 {
+    Q_UNUSED ( l );
+
     #ifdef HAVE_X11
     if ( eventType == "xcb_generic_event_t" )
     {
