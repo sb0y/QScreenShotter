@@ -158,7 +158,7 @@ void windowsWindow::mouseMoveEvent ( QMouseEvent *e )
 
 void windowsWindow::mousePressEvent ( QMouseEvent *e )
 {
-    qDebug() << "mouse press";
+    //qDebug() << "mouse press";
     e->ignore();
     ShowWindow ( ( HWND ) winId(), SW_HIDE );
     owner->windowUnderCursor();
