@@ -135,6 +135,7 @@ void core::trayClick ( QSystemTrayIcon::ActivationReason reason )
                     hideAction->setText ( QObject::tr ( "&Show" ) );
 
                 } else {
+
                     i->second->showNormal();
                     it = windowGeometry.find ( i->first );
                     isVisible = true;

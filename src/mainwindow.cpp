@@ -78,7 +78,7 @@ void MainWindow::setMainAction ( enum MainWindow::actions action )
     }
 
     this->action = action;
-    main->action = action;
+    system::getCore()->action = action;
 }
 
 void MainWindow::setScreenPic ( QPixmap &pic )
@@ -92,7 +92,7 @@ void MainWindow::resizeEvent ( QResizeEvent *event )
     if ( !system::getCore()->picture.isNull() )
     {
         QSize size = ui->mainPic->size();
-        ui->mainPic->setPixmap ( main->picture.scaled ( size.width(), size.height(), Qt::KeepAspectRatio, Qt::SmoothTransformation ) );
+        ui->mainPic->setPixmap ( system::getCore()->picture.scaled ( size.width(), size.height(), Qt::KeepAspectRatio, Qt::SmoothTransformation ) );
     }
 
     event->ignore();
@@ -142,7 +142,7 @@ void MainWindow::openFileDialog()
     imagefile.setFileName ( fileName );
     imagefile.setFormat ( "PNG" );
     imagefile.setQuality ( 100 );
-    imagefile.write ( main->picture.toImage() );
+    imagefile.write ( system::getCore()->picture.toImage() );
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
