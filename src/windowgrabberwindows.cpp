@@ -76,7 +76,7 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     x = windowRect.left;
     y = windowRect.top;
 
-    qDebug() << "taked: " << x << y << w << h;
+    //qDebug() << "taked: " << x << y << w << h;
 
     /*HDC targetDC = GetWindowDC ( windowUnderCursor );
       HDC hDC = CreateCompatibleDC ( targetDC );
