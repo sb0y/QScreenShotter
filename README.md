@@ -7,7 +7,7 @@ The program QScreenShotter will help you to make comfortably an any screenshot o
 
 Сompiles for Linux and Windows.
 
-**How to compile and run**
+**How to compile and run on Linux**
 
 You will need Qt plugin for QPA. At Ubuntu you can install it using command:
 
