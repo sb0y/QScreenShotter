@@ -5,7 +5,7 @@
 
 The program QScreenShotter will help you to make comfortably an any screenshot on your PC.
 
-Сompiles only for Linux. Windows will be soon.
+Сompiles only for Linux and Windows.
 
 **How to compile and run**
 
