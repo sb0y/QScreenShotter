@@ -24,7 +24,7 @@ QString aboutDialog::getOS()
 #ifdef WIN32
     switch ( QSysInfo::windowsVersion() )
     {
-        case QSysInfo::WV_WINDOWS10: return "Windows 10";
+        //case QSysInfo::WV_WINDOWS10: return "Windows 10";
         case QSysInfo::WV_WINDOWS8_1: return "Windows 8.1";
         case QSysInfo::WV_WINDOWS8: return "Windows 8";
         case QSysInfo::WV_WINDOWS7: return "Windows 7";

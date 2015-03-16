@@ -4,7 +4,9 @@
 #include <QDialog>
 #include <QSysInfo>
 #include <QtGlobal>
-#include <sys/utsname.h>
+#ifdef HAVE_X11
+    #include <sys/utsname.h>
+#endif
 #include <QApplication>
 
 namespace Ui {
