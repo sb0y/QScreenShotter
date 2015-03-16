@@ -2,6 +2,9 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
+#include <QSysInfo>
+#include <QtGlobal>
+#include <sys/utsname.h>
 
 namespace Ui {
 class aboutDialog;
@@ -14,6 +17,8 @@ class aboutDialog : public QDialog
 public:
     explicit aboutDialog(QWidget *parent = 0);
     ~aboutDialog();
+
+    QString getOS();
 
 private:
     Ui::aboutDialog *ui;
