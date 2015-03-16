@@ -27,6 +27,8 @@ MainWindow::MainWindow ( QWidget *parent ) :
     QObject::connect ( ui->actionExit, SIGNAL ( triggered(bool) ), qApp, SLOT ( quit() ) );
     QObject::connect ( ui->actionAbout, SIGNAL ( triggered(bool) ), c, SLOT ( showAbout() ) );
 
+    QObject::connect ( ui->actionAbout_Qt, SIGNAL ( triggered ( bool ) ), qApp, SLOT ( aboutQt() ) );
+
     QMenu *menu = ui->buttonExport->getMenu();
 
     QAction *file = new QAction ( QObject::tr ( "To File ..." ), menu );

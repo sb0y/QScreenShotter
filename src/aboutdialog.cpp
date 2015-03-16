@@ -1,5 +1,6 @@
 #include "aboutdialog.h"
 #include "ui_aboutdialog.h"
+#include "core.h"
 #include <qdebug.h>
 
 aboutDialog::aboutDialog(QWidget *parent) :
@@ -38,7 +39,6 @@ QString aboutDialog::getOS()
     utsname buf;
     if ( uname ( &buf ) == 0 )
     {
-
         return QString ( "%0 %1" ).arg ( buf.sysname ).arg ( buf.release );
 
     } else {

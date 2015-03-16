@@ -5,6 +5,7 @@
 #include <QSysInfo>
 #include <QtGlobal>
 #include <sys/utsname.h>
+#include <QApplication>
 
 namespace Ui {
 class aboutDialog;
