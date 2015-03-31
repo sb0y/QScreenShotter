@@ -19,6 +19,8 @@
 //#include "xwindowrectangle.h"
 #include "screenshot.h"
 #include <QTimer>
+#include "webexport.h"
+
 #if defined(HAVE_X11) || defined(WIN32)
     #include "neweventfilter.h"    
 #endif
@@ -66,6 +68,7 @@ public slots:
     void mainAction ( MainWindow::actions action = MainWindow::DEFAULT );
     void toggleVisability();
     void showAbout();
+    void exportToWEB();
 
     void trayShotDisplay();
     void trayShotWindow();

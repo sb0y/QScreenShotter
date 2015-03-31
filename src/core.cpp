@@ -237,3 +237,15 @@ void core::setPixmap ( QPixmap &pixmap )
 {
     picture = pixmap;
 }
+
+void core::exportToWEB()
+{
+    if ( picture.isNull() )
+    {
+        return;
+    }
+
+    WEBExport exp;
+    exp.setPixmap ( &picture );
+    exp.exec();
+}

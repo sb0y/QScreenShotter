@@ -21,7 +21,7 @@ void menuButton::mousePressEvent ( QMouseEvent *e )
     setDown ( true );
     QRect rect = contentsRect();
     QPoint pos = mapToGlobal ( rect.topLeft() );
-    menu->move ( pos.x(), pos.y() - size().height() - 2 );
+    menu->move ( pos.x(), ( pos.y() - menu->sizeHint().height() ) );
     menu->show();
 }
 

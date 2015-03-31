@@ -57,7 +57,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Author &lt;a href=&quot;mailto:andrey@bagrintsev.me&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0055ff;&quot;&gt;Andrey Bagritsev&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Author &lt;a href=&quot;mailto:andrey@bagrintsev.me&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0055ff;&quot;&gt;Andrey Bagrintsev&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="textFormat">
         <enum>Qt::RichText</enum>

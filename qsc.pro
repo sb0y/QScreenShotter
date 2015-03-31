@@ -15,7 +15,7 @@ greaterThan ( QT_MAJOR_VERSION, 4 )
 #unix:QMAKE_CXXFLAGS += -std=c++11 -std=gnu++11
 
 unix:!mac:DEFINES += HAVE_X11
-QT += core gui
+QT += core gui network
 
 TARGET = qsc
 TEMPLATE = app
@@ -35,3 +35,7 @@ QMAKE_TARGET_COMPANY = bagrintsev.me
 QMAKE_TARGET_PRODUCT = QScreenShotter
 QMAKE_TARGET_DESCRIPTION = Simple screenshot program
 QMAKE_TARGET_COPYRIGHT = andrey@bagrintsev.me
+
+HEADERS +=
+
+SOURCES +=

@@ -32,9 +32,12 @@ MainWindow::MainWindow ( QWidget *parent ) :
     QMenu *menu = ui->buttonExport->getMenu();
 
     QAction *file = new QAction ( QObject::tr ( "To File ..." ), menu );
+    QAction *web = new QAction ( QObject::tr ( "To WEB" ), menu );
     menu->addAction ( file );
+    menu->addAction ( web );
 
     QObject::connect ( file, SIGNAL ( triggered ( bool ) ), this, SLOT ( openFileDialog() ) );
+    QObject::connect ( web, SIGNAL ( triggered ( bool ) ), c, SLOT ( exportToWEB() ) );
 
 //    c->rect.draw();
 }
