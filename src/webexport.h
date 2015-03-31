@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QBuffer>
 #include <QHttpMultiPart>
+#include <qdebug.h>
 #define URL "http://localhost"
 
 class WEBExport : public QObject
