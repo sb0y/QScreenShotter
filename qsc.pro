@@ -35,7 +35,3 @@ QMAKE_TARGET_COMPANY = bagrintsev.me
 QMAKE_TARGET_PRODUCT = QScreenShotter
 QMAKE_TARGET_DESCRIPTION = Simple screenshot program
 QMAKE_TARGET_COPYRIGHT = andrey@bagrintsev.me
-
-HEADERS +=
-
-SOURCES +=

@@ -13,6 +13,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QRect>
+#include <QSettings>
 #include <QSignalMapper>
 #include "aboutdialog.h"
 #include <QString>
@@ -34,6 +35,7 @@ class core : public QApplication
 public:
     screenshot *sc;
     QRect screen;
+    WEBExport exp;
 
     std::map < QString, QWidget* > windows;
     QTimer timer;
@@ -46,6 +48,9 @@ public:
     void setPixmap ( QPixmap &pixmap );
 
     bool isVisible;
+
+    // Settings
+    QSettings *settings;
 
     // tray
     QSystemTrayIcon *trayIcon;

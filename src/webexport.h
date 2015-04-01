@@ -8,8 +8,9 @@
 #include <QNetworkReply>
 #include <QBuffer>
 #include <QHttpMultiPart>
+#include <QMessageBox>
 #include <qdebug.h>
-#define URL "http://localhost"
+#define URL "http://bagrintsev.me/screenshot/upload"
 
 class WEBExport : public QObject
 {
@@ -24,7 +25,6 @@ public:
     QByteArray bytes;
     QPixmap *pixmap;
     QNetworkAccessManager net;
-    QNetworkRequest request;
     QHttpMultiPart *multipart;
 
 signals:
@@ -32,7 +32,7 @@ signals:
 public slots:
     void replyFinished ( QNetworkReply * );
     void replyError ( QNetworkReply::NetworkError );
-    void slotReadyRead() { qDebug() << "ready read"; }
+    void slotReadyRead();
 
 };
 

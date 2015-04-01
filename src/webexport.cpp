@@ -1,11 +1,11 @@
 #include "webexport.h"
+#include "core.h"
 
 WEBExport::WEBExport(QObject *parent) :
     QObject(parent)
 {
     pixmap = NULL;
     reply = NULL;
-    request.setUrl ( QUrl ( URL ) );
     net.setNetworkAccessible ( QNetworkAccessManager::Accessible );
 }
 
@@ -29,7 +29,6 @@ void WEBExport::pixmapToByteArray()
 
 void WEBExport::replyFinished ( QNetworkReply *reply )
 {
-    qDebug() << "here";
     qDebug() << reply->readAll();
 }
 
@@ -40,16 +39,32 @@ void WEBExport::replyError ( QNetworkReply::NetworkError reply )
 
 void WEBExport::exec()
 {
+    QString token = system::getCore()->settings->value ( "WEB/accessToken" ).toString();
+
+    if ( token.isEmpty() )
+    {
+        QMessageBox messageBox;
+        messageBox.critical ( getWindow ( "main", MainWindow* ),
+                              "Error",
+                              "An error has occured!\n\nCheck your program settings. Token can not be empty." );
+
+        messageBox.setFixedSize ( 500, 200 );
+        return;
+    }
+
+    QNetworkRequest request;
+    request.setUrl ( QUrl ( URL ) );
+
     QHttpMultiPart *multiPart = new QHttpMultiPart ( QHttpMultiPart::FormDataType );
     QHttpPart textPart;
-    textPart.setHeader ( QNetworkRequest::ContentDispositionHeader, QVariant ( "form-data; name=\"text\"" ) );
-    textPart.setBody ( "my text" );
+    textPart.setHeader ( QNetworkRequest::ContentDispositionHeader, QVariant ( "form-data; name=\"token\"" ) );
+    textPart.setBody ( token.toStdString().c_str() );
 
     pixmapToByteArray();
 
     QHttpPart imagePart;
     imagePart.setHeader ( QNetworkRequest::ContentTypeHeader, QVariant ( "image/png" ) );
-    imagePart.setHeader ( QNetworkRequest::ContentDispositionHeader, QVariant ( "form-data; name=\"image\"" ) );
+    imagePart.setHeader ( QNetworkRequest::ContentDispositionHeader, QVariant ( "form-data; name=\"files[]\"; filename=\"screenshot.png\"" ) );
     imagePart.setBody ( bytes );
 
     multiPart->append ( textPart );
@@ -61,4 +76,9 @@ void WEBExport::exec()
 
     QObject::connect ( reply, SIGNAL ( error ( QNetworkReply::NetworkError ) ), this, SLOT ( replyError ( QNetworkReply::NetworkError ) ) );
     QObject::connect ( reply, SIGNAL ( readyRead() ), this, SLOT ( slotReadyRead() ) );
+}
+
+void WEBExport::slotReadyRead()
+{
+    //Debug() << "ready read";
 }

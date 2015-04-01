@@ -21,6 +21,15 @@ core::core ( int &argc, char *argv[] ) :
     #endif
 
     sc = NULL;
+
+    QString path;
+    #ifdef HAVE_X11
+    path = QDir::homePath() + "/.config/QScreenShotter/config.conf";
+    #elif WIN32
+    path = QDir::homePath() + "/QScreenShotter/config.conf";
+    #endif
+
+    settings = new QSettings ( path, QSettings::IniFormat );
 }
 
 core::~core()
@@ -37,6 +46,10 @@ core::~core()
     delete trayMenu;
     delete trayIcon;
     delete sc;
+
+    settings->sync();
+
+    delete settings;
 }
 
 int core::exec()
@@ -245,7 +258,6 @@ void core::exportToWEB()
         return;
     }
 
-    WEBExport exp;
     exp.setPixmap ( &picture );
     exp.exec();
 }
