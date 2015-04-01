@@ -1,7 +1,7 @@
 # QScreenShotter [![Build Status](https://travis-ci.org/sb0y/QScreenShotter.svg?branch=master)](https://travis-ci.org/sb0y/QScreenShotter)
 
 ![Linux ScreenShot](https://myapps.developer.ubuntu.com/site_media/appmedia/2015/02/QScreenShotter_004.png)
-![Windows ScreenShot](https://www.odesk.com/att/~~VINXiRTgqgr3nlWlxmUieqU2TTclNEg4M4pHBUaJzXqd5Zub2qKKBGvycFpOIFHD8m6nM5IqD-Ygu*PHEYC4KpbjRSfB3vIb)
+![Windows ScreenShot](http://cs612220.vk.me/u886253/docs/7318189d1008/Bezymyannyy.png?extra=Z48ZGbg4BCb6rjezuq8QBXiizACJgdLGac1hFRvjsxI6Vp_tXtf4b4-xYvxvcQubJzkVzUg-iWDmlWHijxy-GbRc)
 
 The program QScreenShotter will help you to make comfortably an any screenshot on your PC.
 
