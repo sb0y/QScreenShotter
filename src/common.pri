@@ -13,7 +13,8 @@ SOURCES += src/main.cpp\
     src/qtthread.cpp \
     src/grabberbasedialog.cpp \
     src/webexport.cpp \
-    src/settingsdialog.cpp
+    src/settingsdialog.cpp \
+    src/qlineeditfocus.cpp
 
 HEADERS  += src/mainwindow.h \
     src/core.h \
@@ -29,7 +30,8 @@ HEADERS  += src/mainwindow.h \
     src/qtthread.h \
     src/grabberbasedialog.h \
     src/webexport.h \
-    src/settingsdialog.h
+    src/settingsdialog.h \
+    src/qlineeditfocus.h
 
 unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \

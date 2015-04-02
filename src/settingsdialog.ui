@@ -6,21 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>410</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
@@ -41,19 +34,16 @@
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="1" column="1">
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
+            <widget class="QLineEditFocus" name="lineToken"/>
            </item>
-           <item row="0" column="0">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineSite">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
             <widget class="QLabel" name="label">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -61,24 +51,32 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
              <property name="text">
-              <string>Access token</string>
+              <string>Access Token</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Site</string>
+             </property>
+            </widget>
            </item>
           </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can export your screenshots in World Wide Web directly from here. As hosting uses a site with PHP CMS &lt;a href=&quot;https://github.com/sb0y/sblog&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#01a6d8;&quot;&gt;Sblog&lt;/span&gt;&lt;/a&gt; with module &amp;quot;screenshots&amp;quot;. &lt;br/&gt;You need from there only &lt;a name=&quot;accessToken&quot;/&gt;&lt;a href=&quot;http://bagrintsev.me/screenshot/token&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#01a6d8;&quot;&gt;A&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; text-decoration: underline; color:#01a6d8;&quot;&gt;ccess Token&lt;/span&gt; which grants rights to store data on server.&lt;/p&gt;&lt;p&gt;You will receive a direct link on your picture which can freely be embedded into HTML or BBs forum codes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -86,8 +84,35 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCommandLinkButton" name="commandLinkButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Get the Access Token</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QLineEditFocus</class>
+   <extends>QLineEdit</extends>
+   <header>src/qlineeditfocus.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

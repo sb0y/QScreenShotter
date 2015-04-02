@@ -10,10 +10,11 @@ settingsDialog::settingsDialog(QWidget *parent) :
 
     setWindowTitle ( QObject::tr ( "Settings" ) );
 
-    ui->lineEdit->setText( system::getCore()->settings->value ( "WEB/accessToken" ).toString() );
+    ui->lineToken->setText ( system::getCore()->settings->value ( "WEB/accessToken" ).toString() );
+    ui->lineSite->setText ( system::getCore()->settings->value ( "WEB/site" ).toString() );
 
-    QObject::connect ( ui->lineEdit, SIGNAL ( cursorPositionChanged ( int, int ) ), this, SLOT ( select() ) );
     QObject::connect ( ui->buttonBox, SIGNAL ( accepted() ), this, SLOT ( save() ) );
+    QObject::connect ( ui->commandLinkButton, SIGNAL ( clicked() ), this, SLOT ( goForToken() ) );
 }
 
 settingsDialog::~settingsDialog()
@@ -23,11 +24,21 @@ settingsDialog::~settingsDialog()
 
 void settingsDialog::save()
 {
-    system::getCore()->settings->setValue ( "WEB/accessToken", ui->lineEdit->text() );
+    system::getCore()->settings->setValue ( "WEB/accessToken", ui->lineToken->text() );
     close();
 }
 
-void settingsDialog::select()
+void settingsDialog::goForToken()
 {
-    ui->lineEdit->selectAll();
+    QUrl url;
+    url.setScheme ( "http" );
+    url.setHost ( ui->lineSite->text() );
+    url.setPath ( "/screenshot/token" );
+
+    QDesktopServices::openUrl ( url );
+}
+
+void settingsDialog::processHTML()
+{
+
 }

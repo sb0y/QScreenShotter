@@ -46,6 +46,7 @@ public:
     virtual ~core();
     int exec();
     void setPixmap ( QPixmap &pixmap );
+    void defaultSettings();
 
     bool isVisible;
 

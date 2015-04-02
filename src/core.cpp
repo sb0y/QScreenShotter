@@ -52,6 +52,30 @@ core::~core()
     delete settings;
 }
 
+void core::defaultSettings()
+{
+    struct container
+    {
+        const char *key;
+        const char *val;
+    };
+
+    container pack[] =
+    {
+        { "WEB/site", "bagrintsev.me" },
+        { "WEB/accessToken", "" },
+        { NULL, NULL } // end
+    };
+
+    for ( int i = 0; pack [ i ].key != NULL; ++i )
+    {
+        if ( settings->value ( pack [ i ].key ).isNull() )
+        {
+            settings->setValue ( pack [ i ].key, pack [ i ].val );
+        }
+    }
+}
+
 int core::exec()
 {
     MainWindow *mw = new MainWindow;
@@ -80,6 +104,8 @@ int core::exec()
     mw->init ( this );
 
     screen = qApp->primaryScreen()->geometry();
+
+    defaultSettings();
 
     return QApplication::exec();
 }
