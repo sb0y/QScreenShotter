@@ -284,6 +284,8 @@ void core::exportToWEB()
         return;
     }
 
-    exp.setPixmap ( &picture );
-    exp.exec();
+    exportDialog *ep = new exportDialog;
+    windows [ "export" ] = ep;
+
+    ep->show();
 }

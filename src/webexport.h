@@ -20,6 +20,7 @@ public:
     void setPixmap ( QPixmap *p );
     void exec();
     void pixmapToByteArray();
+    void stop();
 
     QNetworkReply *reply;
     QByteArray bytes;

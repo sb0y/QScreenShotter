@@ -14,7 +14,9 @@ SOURCES += src/main.cpp\
     src/grabberbasedialog.cpp \
     src/webexport.cpp \
     src/settingsdialog.cpp \
-    src/qlineeditfocus.cpp
+    src/qlineeditfocus.cpp \
+    src/exportdialog.cpp \
+    src/exportresult.cpp
 
 HEADERS  += src/mainwindow.h \
     src/core.h \
@@ -31,7 +33,9 @@ HEADERS  += src/mainwindow.h \
     src/grabberbasedialog.h \
     src/webexport.h \
     src/settingsdialog.h \
-    src/qlineeditfocus.h
+    src/qlineeditfocus.h \
+    src/exportdialog.h \
+    src/exportresult.h
 
 unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \
@@ -56,4 +60,6 @@ win32:SOURCES += src/windowgrabberwindows.cpp \
 
 FORMS    += src/mainwindow.ui \
     src/aboutdialog.ui \
-    src/settingsdialog.ui
+    src/settingsdialog.ui \
+    src/exportdialog.ui \
+    src/exportresult.ui

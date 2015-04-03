@@ -21,6 +21,7 @@
 #include "screenshot.h"
 #include <QTimer>
 #include "webexport.h"
+#include "exportdialog.h"
 
 #if defined(HAVE_X11) || defined(WIN32)
     #include "neweventfilter.h"    
