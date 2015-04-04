@@ -9,6 +9,8 @@
 #include <QBuffer>
 #include <QHttpMultiPart>
 #include <QMessageBox>
+#include <QJsonDocument>
+#include <QJsonArray>
 #include <qdebug.h>
 #define URL "http://bagrintsev.me/screenshot/upload"
 

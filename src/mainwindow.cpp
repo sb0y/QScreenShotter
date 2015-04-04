@@ -39,7 +39,7 @@ MainWindow::MainWindow ( QWidget *parent ) :
     QObject::connect ( file, SIGNAL ( triggered ( bool ) ), this, SLOT ( openFileDialog() ) );
     QObject::connect ( web, SIGNAL ( triggered ( bool ) ), c, SLOT ( exportToWEB() ) );
 
-    QObject::connect ( ui->actionSettings, SIGNAL ( triggered ( bool ) ), this, SLOT ( openSettingsDialog() ) );
+    QObject::connect ( ui->actionSettings, SIGNAL ( triggered ( bool ) ), c, SLOT ( openSettingsDialog() ) );
 
 //    c->rect.draw();
 }
@@ -48,12 +48,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
     ui = NULL;
-}
-
-void MainWindow::openSettingsDialog()
-{
-    settingsDialog *sd = new settingsDialog ( this );
-    sd->show();
 }
 
 int MainWindow::init ( core *core )

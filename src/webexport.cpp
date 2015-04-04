@@ -29,7 +29,19 @@ void WEBExport::pixmapToByteArray()
 
 void WEBExport::replyFinished ( QNetworkReply *reply )
 {
-    qDebug() << reply->readAll();
+    QString strReply = reply->readAll();
+
+    if ( strReply.isEmpty() )
+    {
+        return;
+    }
+
+    QJsonDocument jsonResponse = QJsonDocument::fromJson ( strReply.toUtf8() );
+
+    QJsonObject screenshot = jsonResponse.object();
+    QJsonObject obj = screenshot [ "screenshot" ].toObject();
+
+    system::getCore()->showExportResult ( obj [ "big" ].toString(), obj [ "small" ].toString(), QString::number ( obj [ "userID" ].toInt() ) );
 }
 
 void WEBExport::replyError ( QNetworkReply::NetworkError reply )
@@ -64,7 +76,7 @@ void WEBExport::exec()
 
     QHttpPart imagePart;
     imagePart.setHeader ( QNetworkRequest::ContentTypeHeader, QVariant ( "image/png" ) );
-    imagePart.setHeader ( QNetworkRequest::ContentDispositionHeader, QVariant ( "form-data; name=\"files[]\"; filename=\"screenshot.png\"" ) );
+    imagePart.setHeader ( QNetworkRequest::ContentDispositionHeader, QVariant ( "form-data; name=\"screenshot\"; filename=\"screenshot.png\"" ) );
     imagePart.setBody ( bytes );
 
     multiPart->append ( textPart );

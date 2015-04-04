@@ -22,6 +22,7 @@
 #include <QTimer>
 #include "webexport.h"
 #include "exportdialog.h"
+#include "exportresult.h"
 
 #if defined(HAVE_X11) || defined(WIN32)
     #include "neweventfilter.h"    
@@ -76,6 +77,8 @@ public slots:
     void toggleVisability();
     void showAbout();
     void exportToWEB();
+    void showExportResult ( QString, QString, QString );
+    void openSettingsDialog();
 
     void trayShotDisplay();
     void trayShotWindow();

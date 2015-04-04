@@ -19,6 +19,7 @@ settingsDialog::settingsDialog(QWidget *parent) :
 
 settingsDialog::~settingsDialog()
 {
+    system::getCore()->windows [ "settings" ] = NULL;
     delete ui;
 }
 

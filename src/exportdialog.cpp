@@ -2,7 +2,7 @@
 #include "ui_exportdialog.h"
 #include "core.h"
 
-exportDialog::exportDialog(QDialog *parent) :
+exportDialog::exportDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::exportDialog)
 {
@@ -22,6 +22,7 @@ exportDialog::exportDialog(QDialog *parent) :
 
 exportDialog::~exportDialog()
 {
+    system::getCore()->windows [ "export" ] = NULL;
     delete ui;
 }
 
@@ -55,3 +56,4 @@ void exportDialog::emergencyShutdown()
         close();
     }
 }
+

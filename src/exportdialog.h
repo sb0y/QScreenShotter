@@ -13,8 +13,10 @@ class exportDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit exportDialog(QDialog *parent = 0);
+    explicit exportDialog(QWidget *parent = 0);
     ~exportDialog();
+
+protected:
 
 public slots:
     void updateProgress ( qint64 bytesReceived, qint64 bytesTotal );

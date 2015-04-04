@@ -12,11 +12,16 @@ class exportResult : public QDialog
     Q_OBJECT
 
 public:
-    explicit exportResult(QWidget *parent = 0);
+    explicit exportResult ( QWidget *parent = 0 );
     ~exportResult();
+
+    void setResult ( QString big, QString small, QString userID );
+
+protected:
 
 private:
     Ui::exportResult *ui;
+    QString big, small, userID, base;
 };
 
 #endif // EXPORTRESULT_H

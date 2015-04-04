@@ -16,6 +16,7 @@ aboutDialog::aboutDialog(QWidget *parent) :
 
 aboutDialog::~aboutDialog()
 {
+    system::getCore()->windows [ "about" ] = NULL;
     delete ui;
 }
 

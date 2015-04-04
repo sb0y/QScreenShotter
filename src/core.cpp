@@ -212,13 +212,6 @@ void core::toggleVisability()
     trayClick ( QSystemTrayIcon::Trigger );
 }
 
-void core::showAbout()
-{
-    QDialog *d = new aboutDialog;
-    d->show();
-    windows [ "about" ] = d;
-}
-
 void core::mainAction ( MainWindow::actions act )
 {
     MainWindow::actions old_act = MainWindow::DEFAULT;
@@ -284,8 +277,31 @@ void core::exportToWEB()
         return;
     }
 
-    exportDialog *ep = new exportDialog;
+    exportDialog *ep = new exportDialog ( windows [ "main" ] );
     windows [ "export" ] = ep;
 
     ep->show();
+}
+
+void core::showExportResult ( QString big, QString small, QString userID )
+{
+    exportResult *er = new exportResult ( windows [ "main" ] );
+    windows [ "exportResult" ] = er;
+
+    er->setResult ( big, small, userID );
+    er->show();
+}
+
+void core::openSettingsDialog()
+{
+    settingsDialog *sd = new settingsDialog ( windows [ "main" ] );
+    windows [ "settingsDialog" ] = sd;
+    sd->show();
+}
+
+void core::showAbout()
+{
+    QDialog *d = new aboutDialog;
+    d->show();
+    windows [ "about" ] = d;
 }

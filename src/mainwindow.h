@@ -52,7 +52,6 @@ public:
 public slots:
     void setMainAction ( enum actions action = DEFAULT );
     void openFileDialog();
-    void openSettingsDialog();
     //void setVisible ( bool visible );
 
 signals:
