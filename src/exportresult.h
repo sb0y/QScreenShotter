@@ -17,6 +17,9 @@ public:
 
     void setResult ( QString big, QString small, QString userID );
 
+public slots:
+    void updateLabels();
+
 protected:
 
 private:
