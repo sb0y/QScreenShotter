@@ -32,7 +32,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="link"/>
+        <widget class="QLineEditFocus" name="link"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="directLinkLabel">
@@ -45,7 +45,7 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="directLink"/>
+        <widget class="QLineEditFocus" name="directLink"/>
        </item>
       </layout>
      </item>
@@ -59,7 +59,7 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QPlainTextEdit" name="htmlcode"/>
+        <widget class="QPlainTextEditFocus" name="htmlcode"/>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_4">
@@ -69,7 +69,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QPlainTextEdit" name="bbcode"/>
+        <widget class="QPlainTextEditFocus" name="bbcode"/>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_5">
@@ -79,7 +79,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QPlainTextEdit" name="bbcodeThumbnail"/>
+        <widget class="QPlainTextEditFocus" name="bbcodeThumbnail"/>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_6">
@@ -89,7 +89,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QPlainTextEdit" name="htmlcodeThumbnail"/>
+        <widget class="QPlainTextEditFocus" name="htmlcodeThumbnail"/>
        </item>
       </layout>
      </item>
@@ -121,6 +121,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QLineEditFocus</class>
+   <extends>QLineEdit</extends>
+   <header>src/qlineeditfocus.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QPlainTextEditFocus</class>
+   <extends>QPlainTextEdit</extends>
+   <header>src/qplaintexteditfocus.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

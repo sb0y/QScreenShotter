@@ -16,7 +16,8 @@ SOURCES += src/main.cpp\
     src/settingsdialog.cpp \
     src/qlineeditfocus.cpp \
     src/exportdialog.cpp \
-    src/exportresult.cpp
+    src/exportresult.cpp \
+    src/qplaintexteditfocus.cpp
 
 HEADERS  += src/mainwindow.h \
     src/core.h \
@@ -35,7 +36,8 @@ HEADERS  += src/mainwindow.h \
     src/settingsdialog.h \
     src/qlineeditfocus.h \
     src/exportdialog.h \
-    src/exportresult.h
+    src/exportresult.h \
+    src/qplaintexteditfocus.h
 
 unix:!mac:HEADERS  += src/windowgrabberlinux.h \
     src/x11info.h \

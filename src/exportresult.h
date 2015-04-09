@@ -2,6 +2,7 @@
 #define EXPORTRESULT_H
 
 #include <QDialog>
+#include "qplaintexteditfocus.h"
 
 namespace Ui {
 class exportResult;
