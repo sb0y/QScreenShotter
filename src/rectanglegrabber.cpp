@@ -89,6 +89,8 @@ void rectangleGrabber::prepare()
 
 void rectangleGrabber::done()
 {
+    delete band;
+    band = NULL;
     close();
     releaseKeyboard();
     system::getCore()->toggleVisability();
