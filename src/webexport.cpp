@@ -41,7 +41,7 @@ void WEBExport::replyFinished ( QNetworkReply *reply )
     QJsonObject screenshot = jsonResponse.object();
     QJsonObject obj = screenshot [ "screenshot" ].toObject();
 
-    system::getCore()->showExportResult ( obj [ "big" ].toString(), obj [ "small" ].toString(), QString::number ( obj [ "userID" ].toInt() ) );
+    system::getCore()->showExportResult ( obj.value ( "big" ).toString(), obj.value ( "small" ).toString(), obj.value ( "userID" ).toVariant().toString() );
 }
 
 void WEBExport::replyError ( QNetworkReply::NetworkError reply )
