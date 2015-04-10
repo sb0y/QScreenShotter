@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QJsonDocument>
 #include <QJsonArray>
+#include <QJsonObject>
 #include <qdebug.h>
 #define URL "http://bagrintsev.me/screenshot/upload"
 
