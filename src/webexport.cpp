@@ -41,7 +41,11 @@ void WEBExport::replyFinished ( QNetworkReply *reply )
     QJsonObject screenshot = jsonResponse.object();
     QJsonObject obj = screenshot [ "screenshot" ].toObject();
 
-    system::getCore()->showExportResult ( obj.value ( "big" ).toString(), obj.value ( "small" ).toString(), obj.value ( "userID" ).toVariant().toString() );
+    system::getCore()->showExportResult ( obj.value ( "big" ).toString(),
+                                          obj.value ( "small" ).toString(),
+                                          obj.value ( "userID" ).toVariant().toString() ); // perhaps Travis using an old version of Qt
+                                                                                           // so where no method QJsonValueRef::toInt()
+                                                                                           // so we retrieves userID through a QVariant
 }
 
 void WEBExport::replyError ( QNetworkReply::NetworkError reply )
