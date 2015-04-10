@@ -10,7 +10,7 @@ before_install:
 #- tar -xpf /tmp/qt.tar.gz
 #- cd qt-everywhere-opensource-src-5.4.1 && ./configure -opensource -confirm-license -qt-xcb && make && sudo make install
 #- cd ../..
-- wget http://download.qt.io/archive/qt/5.4/5.4.1/submodules/qtx11extras-opensource-src-5.4.1.tar.gz -O /tmp/qx11extras.tar.ggz
+- wget http://download.qt.io/archive/qt/5.4/5.4.1/submodules/qtx11extras-opensource-src-5.4.1.tar.gz -O /tmp/qx11extras.tar.gz
 - tar -xvpf /tmp/qx11extras.tar.gz
 - cd qtx11extras-opensource-src-5.4.1 && qmake && make && sudo make install
 
