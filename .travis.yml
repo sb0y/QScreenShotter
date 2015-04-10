@@ -13,6 +13,7 @@ before_install:
 - wget http://download.qt.io/archive/qt/5.4/5.4.1/submodules/qtx11extras-opensource-src-5.4.1.tar.gz -O /tmp/qx11extras.tar.gz
 - tar -xvpf /tmp/qx11extras.tar.gz
 - cd qtx11extras-opensource-src-5.4.1 && qmake && make && sudo make install
+- cd ..
 
 script:
   - qmake -project
