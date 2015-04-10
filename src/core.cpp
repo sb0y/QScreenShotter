@@ -26,7 +26,7 @@ core::core ( int &argc, char *argv[] ) :
     #ifdef HAVE_X11
     path = QDir::homePath() + "/.config/QScreenShotter/config.conf";
     #elif WIN32
-    path = QDir::homePath() + "/QScreenShotter/config.conf";
+    path = QStandardPaths::writableLocation ( QStandardPaths::DataLocation ) + "/config.conf";
     #endif
 
     settings = new QSettings ( path, QSettings::IniFormat );

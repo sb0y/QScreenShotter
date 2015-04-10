@@ -30,7 +30,7 @@ include ( src/common.pri )
 RESOURCES += \
     icons.qrc
 
-VERSION = 0.0.0.2
+VERSION = 0.0.0.3
 QMAKE_TARGET_COMPANY = bagrintsev.me
 QMAKE_TARGET_PRODUCT = QScreenShotter
 QMAKE_TARGET_DESCRIPTION = Simple screenshot program

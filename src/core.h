@@ -15,6 +15,7 @@
 #include <QRect>
 #include <QSettings>
 #include <QSignalMapper>
+#include <QStandardPaths>
 #include "aboutdialog.h"
 #include <QString>
 //#include "xwindowrectangle.h"

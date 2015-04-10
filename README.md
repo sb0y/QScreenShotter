@@ -4,9 +4,17 @@
 ![Windows ScreenShot](https://lh3.googleusercontent.com/-MSVRSf8RZr8/VSA0A17T3XI/AAAAAAAABNU/XbXjr9PRkek/w506-h458/Bezymyannyy.png)
 ![Screenshot in WEB](https://lh6.googleusercontent.com/-ZzifPJ4eRWo/VSbBWZ2-w8I/AAAAAAAABOE/mmV7w3GIWhc/w1008-h618-no/%D1%81%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA31.png)
 
-The program QScreenShotter will help you to make comfortably an any screenshot on your PC.
+The program QScreenShotter will help you to make comfortably an any screenshot on your PC and share the link via IM or social networks.
 
 Сompiles for Linux and Windows.
+
+**How to install on Windows**
+
+Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.3b/QScreenShotterInstall.exe).
+
+**How to compile on Windows**
+
+Read the [official manual](http://wiki.qt.io/How-to-build-a-static-Qt-for-Windows-MinGW).
 
 **How to compile and run on Linux**
 
