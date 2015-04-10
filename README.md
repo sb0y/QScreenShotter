@@ -8,6 +8,14 @@ The program QScreenShotter will help you to make comfortably an any screenshot o
 
 Сompiles for Linux and Windows.
 
+**How to install on Windows**
+
+Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.3b/QScreenShotterInstall.exe).
+
+**How to compile on Windows**
+
+Read the [official manual](http://wiki.qt.io/How-to-build-a-static-Qt-for-Windows-MinGW).
+
 **How to compile and run on Linux**
 
 You will need Qt plugin for QPA. At Ubuntu you can install it using command:
