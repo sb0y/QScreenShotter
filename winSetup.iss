@@ -22,8 +22,8 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputDir=C:\
-OutputBaseFilename=setup
+OutputDir=C:\Users\user\Documents
+OutputBaseFilename=QScreenShotterInstall
 SetupIconFile=C:\Users\user\Documents\GitHub\QScreenShotter\images\tray32x32.ico
 Compression=lzma
 SolidCompression=yes
@@ -48,4 +48,7 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Fil
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+
+[UninstallDelete]
+Type: filesandordirs; Name: "{localappdata}\andrey@bagrintsev.me\qsc"
 
