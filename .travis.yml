@@ -8,7 +8,7 @@ before_install:
 - sudo apt-get install ubuntu-sdk qt5-default qttools5-dev-tools qtbase5-dev qtbase5-private-dev
 - wget http://download.qt.io/archive/qt/5.4/5.4.1/single/qt-everywhere-opensource-src-5.4.1.tar.gz -O /tmp/qt.tar.gz
 - tar -xpf /tmp/qt.tar.gz
-- cd qt-everywhere-opensource-src-5.4.1 && ./configure -opensource -confirm-license && sudo make install
+- cd qt-everywhere-opensource-src-5.4.1 && ./configure -opensource -confirm-license -qt-xcb && sudo make install
 - cd qtx11extras && make && sudo make install
 - cd ../..
 
