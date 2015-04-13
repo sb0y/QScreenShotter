@@ -277,6 +277,12 @@ void core::exportToWEB()
         return;
     }
 
+    if ( settings->value ( "WEB/accessToken" ).toString().isEmpty() )
+    {
+        openSettingsDialog();
+        return;
+    }
+
     exportDialog *ep = new exportDialog ( windows [ "main" ] );
     windows [ "export" ] = ep;
 
