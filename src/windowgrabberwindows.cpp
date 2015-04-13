@@ -55,6 +55,8 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     QPixmap pm;
 
     WINDOWINFO wi;
+    WINDOWPLACEMENT wp;
+
     GetWindowInfo ( windowUnderCursor, &wi );
 
     //cxWindowBorder = wi.cxWindowBorders;
@@ -64,11 +66,13 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
 
     RECT windowRect;
 
-    GetWindowRect ( windowUnderCursor, &windowRect );
+    GetWindowPlacement ( windowUnderCursor, &wp );
 
-    if ( GetAncestor ( windowUnderCursor, GA_ROOT ) == windowUnderCursor )
+    if ( wp.showCmd == SW_SHOWMAXIMIZED )
     {
         SystemParametersInfo ( SPI_GETWORKAREA, 0, &windowRect, 0 );
+    } else {
+        GetWindowRect ( windowUnderCursor, &windowRect );
     }
 
     w = windowRect.right - windowRect.left;
@@ -76,7 +80,7 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     x = windowRect.left;
     y = windowRect.top;
 
-    //qDebug() << "taked: " << x << y << w << h;
+    qDebug() << "taked: " << x << y << w << h;
 
     /*HDC targetDC = GetWindowDC ( windowUnderCursor );
       HDC hDC = CreateCompatibleDC ( targetDC );
