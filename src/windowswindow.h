@@ -42,6 +42,7 @@ public:
     void eraseRectangle();
 
     void mouseTick();
+    void test();
 
 protected:
     void timerEvent(QTimerEvent *event);

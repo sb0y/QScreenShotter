@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "QScreenShotter"
-#define MyAppVersion "0.3b"
+#define MyAppVersion "0.4b"
 #define MyAppPublisher "bagrintsev.me"
 #define MyAppURL "http://www.bagrintsev.me/"
 #define MyAppExeName "qsc.exe"
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{50BCA490-DD10-4E82-BD2A-BF8B33DE037B}
+AppId={{50BCA490-DD10-4E82-BD2A-BF8B33DE037B}}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}

@@ -6,6 +6,7 @@ windowsWindow::windowsWindow()
     installEventFilter ( this );
     mm = -1;
     highlightedWindow = NULL;
+    test();
 }
 
 windowsWindow::~windowsWindow()
@@ -20,16 +21,23 @@ bool windowsWindow::drawRectangle (int x, int y, int w, int h )
     //HWND dsk = GetDesktopWindow();
 
     Gdiplus::GdiplusStartup ( &gdiplusToken, &gdiplusStartupInput, NULL );
-    HDC hdc = GetDC ( NULL );
+    HDC hdc = GetDC ( (HWND)winId() );
+
+    //SetBkMode ( hdc, TRANSPARENT );
+
     Gdiplus::Graphics graphics ( hdc );
     Gdiplus::Pen pen ( Gdiplus::Color::Red, 3 );
     //rec = location
     Gdiplus::Rect rec ( x, y, w, h );
     Gdiplus::Status st = graphics.DrawRectangle ( &pen, rec );
 
+    //graphics.Clear ( Gdiplus::Color::Transparent );
+
     ReleaseDC ( NULL, hdc );
 
-    return ( (bool) st );
+    LockWindowUpdate ( (HWND)winId() );
+
+    return true;
 }
 
 void windowsWindow::timerEvent ( QTimerEvent *e )
@@ -104,10 +112,9 @@ void windowsWindow::mouseTick()
 
             if ( drawRectangle ( x, y, w, h ) )
             {
+                SetForegroundWindow ( windowUnderCursor );
                 highlightedWindow = windowUnderCursor;
                 highlightedWindowRECT = *rect;
-                //SetActiveWindow ( windowUnderCursor );
-                //SetFocus ( windowUnderCursor );
             }
         }
     } else {
@@ -124,25 +131,12 @@ void windowsWindow::eraseRectangle()
     if ( NULL == highlightedWindow )
         return;
 
-    RECT rectUpd;
+    LockWindowUpdate ( NULL );
 
-    rectUpd = highlightedWindowRECT;
-
-    rectUpd.left -= 2;
-    rectUpd.right += 2;
-    rectUpd.top -= 2;
-    rectUpd.bottom += 2;
-
-    //RedrawWindow ( highlightedWindow, rect, NULL, RDW_ERASE|RDW_INVALIDATE|RDW_ALLCHILDREN );
-    //RedrawWindow ( NULL, rect, NULL, RDW_ERASENOW|RDW_ERASE|RDW_INVALIDATE|RDW_ALLCHILDREN );
-
-    RedrawWindow ( highlightedWindow, &rectUpd, NULL, RDW_ERASE | RDW_INVALIDATE | RDW_ALLCHILDREN );
-    RedrawWindow ( NULL, &rectUpd, NULL, RDW_ERASENOW | RDW_ERASE | RDW_INVALIDATE | RDW_ALLCHILDREN );
-
-    FlashWindow ( highlightedWindow, FALSE );
+    ShowWindow ( (HWND)winId(), SW_HIDE );
+    ShowWindow ( (HWND)winId(), SW_SHOW );
 
     highlightedWindow = NULL;
-    //highlightedWindowRECT = { 0, 0, 0, 0 };
 }
 
 void windowsWindow::mouseMoveEvent ( QMouseEvent *e )
@@ -184,4 +178,8 @@ bool windowsWindow::eventFilter ( QObject *o, QEvent *e )
 void windowsWindow::setOwner ( windowGrabberWindows *w )
 {
     owner = w;
+}
+
+void windowsWindow::test()
+{
 }

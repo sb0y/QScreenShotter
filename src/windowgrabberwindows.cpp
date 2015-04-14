@@ -80,7 +80,7 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
     x = windowRect.left;
     y = windowRect.top;
 
-    qDebug() << "taked: " << x << y << w << h;
+    //qDebug() << "taked: " << x << y << w << h;
 
     /*HDC targetDC = GetWindowDC ( windowUnderCursor );
       HDC hDC = CreateCompatibleDC ( targetDC );
@@ -92,6 +92,7 @@ void windowGrabberWindows::windowUnderCursor ( bool includeDecorations )
       BitBlt ( hDC, 0, 0, w, h, targetDC, 0, 0, SRCCOPY );
       tempPic = ( HBITMAP ) SelectObject ( hDC, oldPic ); */
 
+    _pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
      pm = _pixmap.copy ( x, y, w, h );
 
      //DeleteDC ( hDC );
@@ -128,8 +129,6 @@ void windowGrabberWindows::prepare()
    clearTrackedWindows();
    getAllAvailableWindows();
 
-   _pixmap = qApp->primaryScreen()->grabWindow ( QApplication::desktop()->winId() );
-
    if ( wnd != NULL )
    {
        delete wnd;
@@ -153,8 +152,10 @@ void windowGrabberWindows::prepare()
    ShowWindow ( winHandle, SW_HIDE );
 
    LONG styles = GetWindowLong ( winHandle, GWL_EXSTYLE );
+   styles = styles | WS_EX_NOACTIVATE | WS_EX_APPWINDOW | WS_EX_TRANSPARENT;
+   styles &= ~WS_EX_COMPOSITED;
 
-   SetWindowLong ( winHandle, GWL_EXSTYLE, styles | WS_EX_NOACTIVATE | WS_EX_APPWINDOW | WS_EX_TRANSPARENT );
+   SetWindowLong ( winHandle, GWL_EXSTYLE, styles  );
    SetWindowPos ( winHandle, HWND_TOPMOST, 0, 0, 0, 0, SWP_SHOWWINDOW | SWP_NOSIZE | SWP_NOMOVE ); // window-positioning options
    ShowWindow ( winHandle, SW_SHOW );
 
@@ -186,25 +187,26 @@ BOOL CALLBACK windowGrabberWindows::EnumWindowsProc ( HWND hwnd, LPARAM lParam )
 {
     Q_UNUSED ( lParam );
 
-    if ( IsWindowVisible ( hwnd ) && IsWindowEnabled ( hwnd ) )
-    {
-        wchar_t class_name [ 80 ];
-        wchar_t title [ 80 ];
-        GetClassName ( hwnd, class_name, sizeof ( class_name ) );
-        GetWindowText ( hwnd, title, sizeof ( title ) );
-
-        if ( _wcsicmp ( class_name, L"Shell_TrayWnd" ) &&
-             _wcsicmp ( class_name, L"Progman" ) &&
-             _wcsicmp ( class_name, L"EdgeUiInputTopWndClass" ) )
+    if ( !( GetWindowLong ( hwnd, GWL_STYLE ) & WS_CHILD ) )
+        if ( IsWindowVisible ( hwnd ) && IsWindowEnabled ( hwnd ) )
         {
-            //std::wcout << "Window title: " << title << std::endl;
-            //std::wcout << "Class name: " << class_name << std::endl;
+            wchar_t class_name [ 80 ];
+            wchar_t title [ 80 ];
+            GetClassName ( hwnd, class_name, sizeof ( class_name ) );
+            GetWindowText ( hwnd, title, sizeof ( title ) );
 
-            RECT *rect = new RECT;
-            GetWindowRect ( hwnd, rect );
-            self->windows.push_back ( winInfo ( hwnd, rect ) );
+            if ( _wcsicmp ( class_name, L"Shell_TrayWnd" ) &&
+                 _wcsicmp ( class_name, L"Progman" ) &&
+                 _wcsicmp ( class_name, L"EdgeUiInputTopWndClass" ) )
+            {
+                //std::wcout << "Window title: " << title << std::endl;
+                //std::wcout << "Class name: " << class_name << std::endl;
+
+                RECT *rect = new RECT;
+                GetWindowRect ( hwnd, rect );
+                self->windows.push_back ( winInfo ( hwnd, rect ) );
+            }
         }
-    }
 
    return TRUE;
 }

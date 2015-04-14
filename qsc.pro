@@ -30,10 +30,10 @@ include ( src/common.pri )
 RESOURCES += \
     icons.qrc
 
-VERSION = 0.0.0.3
+VERSION = 0.0.0.4
 QMAKE_TARGET_COMPANY = bagrintsev.me
 QMAKE_TARGET_PRODUCT = QScreenShotter
 QMAKE_TARGET_DESCRIPTION = Simple screenshot program
 QMAKE_TARGET_COPYRIGHT = andrey@bagrintsev.me
 
-RC_FILE = qsc.rc
+win32:RC_ICONS += images/tray128x128.ico
