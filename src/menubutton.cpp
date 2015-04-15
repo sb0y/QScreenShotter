@@ -47,7 +47,7 @@ void menuButton::paintEvent ( QPaintEvent *e )
 
 QSize menuButton::sizeHint() const
 {
-    QSize size ( 10, 22 );
+    QSize size ( 0, 22 );
     return size;
 }
 
