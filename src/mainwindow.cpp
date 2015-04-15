@@ -18,7 +18,10 @@ MainWindow::MainWindow ( QWidget *parent ) :
 
     core *c = system::getCore();
 
+    ui->shootMode->setFixedHeight ( ui->shootButton->sizeHint().height() );
     ui->shootMode->setFixedWidth ( 22 );
+
+    ui->shootMode->setFixedHeight ( ui->shootButton->sizeHint().height() );
 
     shootMenu = ui->shootMode->getMenu();
     shootMenu->addAction ( new QAction ( QObject::tr ( "Full screen" ), shootMenu ) );
