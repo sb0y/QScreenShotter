@@ -1,11 +1,19 @@
-# QScreenShotter [![Build Status](https://travis-ci.org/sb0y/QScreenShotter.svg?branch=master)](https://travis-ci.org/sb0y/QScreenShotter)
+# Make screenshot and share it!
+**QScreenShotter** [![Build Status](https://travis-ci.org/sb0y/QScreenShotter.svg?branch=master)](https://travis-ci.org/sb0y/QScreenShotter)
+
+The program QScreenShotter will help you make comfortably any screenshot on your PC and share the link via IM or social networks.
+
+You will need to choose from three options for obtaining a screenshot:
+1. Full screen
+2. Window under mouse
+3. Region of the screen
+
+Next step click on **Export** button. You will need only Access Token that you receive via online through a browser.
 
 ![Linux ScreenShot](http://cs622530.vk.me/v622530253/28df9/0f03mqfKa3I.jpg)
 ![Windows ScreenShot](http://cs622530.vk.me/v622530253/28df2/jXiJkT7hS08.jpg)
 ![Export to WEB dialog](http://cs622530.vk.me/v622530253/28e07/INFcsOu_LrY.jpg)
 ![Screenshot in WEB](https://lh6.googleusercontent.com/-ZzifPJ4eRWo/VSbBWZ2-w8I/AAAAAAAABOE/mmV7w3GIWhc/w1008-h618-no/%D1%81%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA31.png)
-
-The program QScreenShotter will help you make comfortably any screenshot on your PC and share the link via IM or social networks.
 
 Сompiles for Linux and Windows.
 
