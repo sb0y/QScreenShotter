@@ -30,8 +30,14 @@ void menuButton::paintEvent ( QPaintEvent *e )
     QStylePainter p ( this );
 
     options.initFrom ( this );
-    options.text = "Export";
+    options.text = text();
+    options.icon = icon();
 
+    QSize sz ( size() );
+    sz.setHeight ( sz.height() - 7 );
+    sz.setWidth ( sz.width() - 7 );
+
+    options.iconSize = sz;
     options.state |= isDown() ? QStyle::State_On : QStyle::State_Off;
 
     p.drawControl ( QStyle::CE_PushButton, options );
@@ -47,7 +53,7 @@ QSize menuButton::sizeHint() const
 
 void menuButton::toUp()
 {
-    setDown(false);
+    setDown ( false );
 }
 
 QMenu* menuButton::getMenu()

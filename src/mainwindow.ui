@@ -90,55 +90,15 @@
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="shootMode">
-                <property name="enabled">
-                 <bool>true</bool>
+               <widget class="menuButton" name="shootMode">
+                <property name="text">
+                 <string/>
                 </property>
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                <property name="icon">
+                 <iconset>
+                  <normalon>:/icons/images/down.png</normalon>
+                 </iconset>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maxVisibleItems">
-                 <number>3</number>
-                </property>
-                <property name="sizeAdjustPolicy">
-                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-                </property>
-                <property name="minimumContentsLength">
-                 <number>0</number>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>16</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="frame">
-                 <bool>false</bool>
-                </property>
-                <item>
-                 <property name="text">
-                  <string extracomment="2">Take whole display</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string extracomment="0">Take window under mouse</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string extracomment="1">Take display area</string>
-                 </property>
-                </item>
                </widget>
               </item>
              </layout>
@@ -172,6 +132,15 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>22</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::DefaultContextMenu</enum>
       </property>
       <property name="text">
        <string>Picture must be right here.</string>

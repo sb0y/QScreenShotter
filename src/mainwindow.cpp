@@ -14,19 +14,23 @@ MainWindow::MainWindow ( QWidget *parent ) :
 
     //qApp->installEventFilter ( this );
     setMouseTracking ( true );
-    ui->shootMode->setFixedWidth ( 20 );
-    ui->shootMode->setFixedHeight ( 21 );
-    ui->shootMode->view()->setMinimumWidth ( 150 );
+    selectedAction = NULL;
 
     core *c = system::getCore();
 
-    QObject::connect ( ui->shootMode, SIGNAL ( currentIndexChanged(int) ), this, SLOT ( setMainAction() ) );
+    ui->shootMode->setFixedWidth ( 22 );
+
+    shootMenu = ui->shootMode->getMenu();
+    shootMenu->addAction ( new QAction ( QObject::tr ( "Full screen" ), shootMenu ) );
+    shootMenu->addAction ( new QAction ( QObject::tr ( "Window under mouse" ), shootMenu ) );
+    shootMenu->addAction ( new QAction ( QObject::tr ( "Area of the screen" ), shootMenu ) );
+
+    QObject::connect ( shootMenu, SIGNAL ( triggered ( QAction* ) ), this, SLOT ( changeShootMode ( QAction* ) ) );
     QObject::connect ( ui->shootButton, SIGNAL ( clicked() ), c, SLOT ( mainAction() ) );
 
     QObject::connect ( ui->buttonExit, SIGNAL ( clicked() ), c, SLOT ( toggleVisability() ) );
     QObject::connect ( ui->actionExit, SIGNAL ( triggered(bool) ), qApp, SLOT ( quit() ) );
     QObject::connect ( ui->actionAbout, SIGNAL ( triggered(bool) ), c, SLOT ( showAbout() ) );
-
     QObject::connect ( ui->actionAbout_Qt, SIGNAL ( triggered ( bool ) ), qApp, SLOT ( aboutQt() ) );
 
     QMenu *menu = ui->buttonExport->getMenu();
@@ -47,6 +51,7 @@ MainWindow::MainWindow ( QWidget *parent ) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete shootMenu;
     ui = NULL;
 }
 
@@ -65,8 +70,16 @@ void MainWindow::mouseMoveEvent ( QMouseEvent * )
 
 void MainWindow::setMainAction ( enum MainWindow::actions action )
 {
-    int selectedIndex = ui->shootMode->currentIndex();
-    ui->shootButton->setText ( ui->shootMode->itemText ( selectedIndex ) );
+    int selectedIndex = 0;
+
+    if ( NULL != selectedAction )
+    {
+        selectedIndex = shootMenu->actions().indexOf ( selectedAction );
+        ui->shootButton->setText ( selectedAction->text() );
+
+    } else {
+        ui->shootButton->setText ( shootMenu->actions().first()->text() );
+    }
 
     switch ( action )
     {
@@ -160,6 +173,12 @@ void MainWindow::paintEvent(QPaintEvent *)
 void MainWindow::keyPressEvent ( QKeyEvent *e )
 {
     e->ignore();
+}
+
+void MainWindow::changeShootMode ( QAction *a )
+{
+    selectedAction = a;
+    setMainAction();
 }
 
 /*void MainWindow::showEvent ( QShowEvent *e )

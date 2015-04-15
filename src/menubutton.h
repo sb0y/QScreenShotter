@@ -15,6 +15,8 @@ public:
     QSize sizeHint() const;
     QMenu* getMenu();
 
+private:
+
 protected:
     QMenu *menu;
     MainWindow *mainw;

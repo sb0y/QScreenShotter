@@ -5,4 +5,7 @@
         <file>images/tray128x128.png</file>
         <file>images/tray64x64.png</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>images/down.png</file>
+    </qresource>
 </RCC>

@@ -52,11 +52,14 @@ public:
 public slots:
     void setMainAction ( enum actions action = DEFAULT );
     void openFileDialog();
+    void changeShootMode ( QAction* );
     //void setVisible ( bool visible );
 
 signals:
 
 private:
+    QMenu *shootMenu;
+    QAction *selectedAction;
     Ui::MainWindow *ui;
     core *main;
     void resizeEvent ( QResizeEvent *event );
