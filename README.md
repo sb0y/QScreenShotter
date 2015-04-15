@@ -10,7 +10,7 @@ The program QScreenShotter will help you make comfortably any screenshot on your
 
 **How to install on Windows**
 
-Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.4b/QScreenShotterInstall.exe).
+Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.5b/QScreenShotterInstall.exe).
 
 **How to compile on Windows**
 
