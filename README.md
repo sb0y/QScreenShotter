@@ -5,13 +5,21 @@ The program QScreenShotter will help you make comfortably any screenshot on your
 
 You will need to choose from three ways to take a screenshot:
 
-1. Full screen
-2. Window under mouse
-3. Region of the screen
-
-Next step click on **Export** button. You will need only Access Token that you receive via online through a browser.
+1. Full screen:
 
 ![Linux ScreenShot](http://cs622530.vk.me/v622530253/28df9/0f03mqfKa3I.jpg)
+
+
+2. Window under mouse
+
+![Taking window](http://cs622530.vk.me/v622530253/28e51/6xpPxV88Ei4.jpg) 
+
+3. Region of the screen
+
+![Taking a region](http://cs622530.vk.me/v622530253/28e64/RRTlbbyZ-gs.jpg)
+
+The next step click on **Export** button. You will need only Access Token that you receive via online through a browser.
+
 ![Windows ScreenShot](http://cs622530.vk.me/v622530253/28df2/jXiJkT7hS08.jpg)
 ![Export to WEB dialog](http://cs622530.vk.me/v622530253/28e07/INFcsOu_LrY.jpg)
 ![Screenshot in WEB](https://lh6.googleusercontent.com/-ZzifPJ4eRWo/VSbBWZ2-w8I/AAAAAAAABOE/mmV7w3GIWhc/w1008-h618-no/%D1%81%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA31.png)
