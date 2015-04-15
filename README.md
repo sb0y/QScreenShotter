@@ -19,9 +19,9 @@ You will need to choose from three ways to take a screenshot:
 
 The next step click on **Export** button. You will need only Access Token that you receive via online through a browser.
 
-Here is preview of the screenshot on the web
-
 ![Export to WEB dialog](http://cs622530.vk.me/v622530253/28e07/INFcsOu_LrY.jpg)
+
+Here is preview of the screenshot on the web
 
 ![Screenshot in WEB](http://cs622530.vk.me/v622530253/28e6e/FKaFhmw9mkU.jpg)
 
