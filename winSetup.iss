@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "QScreenShotter"
-#define MyAppVersion "0.4b"
+#define MyAppVersion "0.5b"
 #define MyAppPublisher "bagrintsev.me"
 #define MyAppURL "http://www.bagrintsev.me/"
 #define MyAppExeName "qsc.exe"
