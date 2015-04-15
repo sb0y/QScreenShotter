@@ -14,8 +14,6 @@
     #include <xcb/xcb.h>
 #endif
 #include <QPaintEvent>
-#include <QGraphicsScene>
-#include <QGraphicsView>
 #include <QHBoxLayout>
 #include <QLabel>
 #include "grabberbase.h"
@@ -27,8 +25,6 @@ class windowGrabberLinux : public grabberBaseDialog
 {
     Q_OBJECT
 public:
-    QGraphicsScene *scene;
-    QGraphicsView *view;
 
     explicit windowGrabberLinux();
     virtual ~windowGrabberLinux();
