@@ -3,7 +3,8 @@
 
 The program QScreenShotter will help you make comfortably any screenshot on your PC and share the link via IM or social networks.
 
-You will need to choose from three options for obtaining a screenshot:
+You will need to choose from three ways to take a screenshot:
+
 1. Full screen
 2. Window under mouse
 3. Region of the screen
