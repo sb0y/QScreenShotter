@@ -17,7 +17,7 @@ You will need to choose from three ways to take a screenshot:
 
 ![Taking a region](http://cs622530.vk.me/v622530253/28e64/RRTlbbyZ-gs.jpg)
 
-The next step click on **Export** button. You will need only Access Token that you receive via online through a browser.
+The next step click on **Export** button. You will need only Access Token that you receive via online through a browser. In the end you will see something like this:
 
 ![Export to WEB dialog](http://cs622530.vk.me/v622530253/28e07/INFcsOu_LrY.jpg)
 
