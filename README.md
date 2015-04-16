@@ -27,15 +27,15 @@ Here is preview of the screenshot on the web
 
 Сompiles for Linux and Windows.
 
-**How to install on Windows**
+**How to install on Windows?**
 
 Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.5b/QScreenShotterInstall.exe).
 
-**How to compile on Windows**
+**How to compile on Windows?**
 
 Read the [official manual](http://wiki.qt.io/How-to-build-a-static-Qt-for-Windows-MinGW).
 
-**How to compile and run on Linux**
+**How to compile and run on Linux?**
 
 You will need Qt plugin for QPA. At Ubuntu you can install it using command:
 
