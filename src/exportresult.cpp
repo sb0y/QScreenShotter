@@ -79,7 +79,7 @@ void exportResult::makeEasy()
     delete advancedLayout;
     advancedLayout = NULL;
 
-    setMinimumHeight ( 0 );
+    setFixedHeight ( 100 );
 
     ui->advancedButton->setText ( "Advanced" );
 }
@@ -87,6 +87,8 @@ void exportResult::makeEasy()
 
 void exportResult::makeHard()
 {
+    _geometry = geometry();
+
     setSizePolicy ( QSizePolicy::Fixed, QSizePolicy::Preferred );
     setFixedHeight ( size().height() );
 
@@ -124,7 +126,7 @@ void exportResult::makeHard()
     advancedLayout->addRow ( bbcodeLabel, bbcode );
     advancedLayout->addRow ( bbcodeThumbnailLabel, bbcodeThumbnail );
 
-    ui->verticalLayout_2->insertLayout(1,advancedLayout,1);
+    ui->verticalLayout_2->insertLayout ( 1, advancedLayout, 1 );
 
     ui->advancedButton->setText ( "Simple" );
 }

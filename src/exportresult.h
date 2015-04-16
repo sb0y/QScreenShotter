@@ -22,6 +22,8 @@ public:
     void makeEasy();
     void makeHard();
 
+    QRect _geometry;
+
 public slots:
     void updateLabels();
     void advancedButton();
