@@ -19,7 +19,7 @@ You will need to choose from three ways to take a screenshot:
 
 Click Export button and get your link.
 
-![Export to WEB dialog](http://cs622530.vk.me/v622530253/28e07/INFcsOu_LrY.jpg)
+![Export to WEB dialog](http://cs625428.vk.me/v625428253/293ad/2JEZLEg3Oyw.jpg)
 
 Here is preview of the screenshot on the web
 
@@ -29,7 +29,7 @@ Here is preview of the screenshot on the web
 
 **How to install on Windows?**
 
-Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.5b/QScreenShotterInstall.exe).
+Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.6b/QScreenShotterInstall.exe).
 
 **How to compile on Windows?**
 
