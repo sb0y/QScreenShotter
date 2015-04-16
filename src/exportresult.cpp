@@ -87,8 +87,6 @@ void exportResult::makeEasy()
 
 void exportResult::makeHard()
 {
-    _geometry = geometry();
-
     setSizePolicy ( QSizePolicy::Fixed, QSizePolicy::Preferred );
     setFixedHeight ( size().height() );
 
@@ -98,7 +96,7 @@ void exportResult::makeHard()
     animation->setEndValue ( 500 );
     animation->start();
 
-    advancedLayout = new QFormLayout;
+    advancedLayout = new QGridLayout;
 
     QLabel *htmlcodeThumbnailLabel = new QLabel ( "HTML Thumbnail", this );
     QLabel *htmlcodeLabel = new QLabel ( "HTML", this );
@@ -113,6 +111,11 @@ void exportResult::makeHard()
 
     QPlainTextEditFocus *bbcodeThumbnail = new QPlainTextEditFocus ( this );
 
+    QToolButton *htmlCodeC = new QToolButton ( this );
+    QToolButton *htmlCodeThumbnailC = new QToolButton ( this );
+    QToolButton *bbCodeC = new QToolButton ( this );
+    QToolButton *bbCodeThumbnailC = new QToolButton ( this );
+
     htmlcodeThumbnail->setPlainText ( QString ( "<a href=\"%0\" title=\"Screenshot from QScreenShotter program\"><img alt=\"Screenshot\" src=\"%1\"></a>" )
                                           .arg ( baseCode + big ).arg ( baseCode + small ) );
 
@@ -121,10 +124,21 @@ void exportResult::makeHard()
     bbcode->setPlainText ( QString ( "[img]%0[/img]" ).arg ( ui->directLink->text() ) );
     htmlcode->setPlainText ( QString ( "<img src=\"%0\" alt=\"Screenshot\" title=\"Screenshot from QScreenShotter program\">" ).arg ( ui->directLink->text() ) );
 
-    advancedLayout->addRow ( htmlcodeLabel, htmlcode );
-    advancedLayout->addRow ( htmlcodeThumbnailLabel, htmlcodeThumbnail );
-    advancedLayout->addRow ( bbcodeLabel, bbcode );
-    advancedLayout->addRow ( bbcodeThumbnailLabel, bbcodeThumbnail );
+    advancedLayout->addWidget ( htmlcodeLabel, 0, 0 );
+    advancedLayout->addWidget ( htmlcode, 0, 1 );
+    advancedLayout->addWidget ( htmlCodeC, 0, 2 );
+
+    advancedLayout->addWidget ( htmlcodeThumbnailLabel, 1, 0 );
+    advancedLayout->addWidget ( htmlcodeThumbnail, 1, 1 );
+    advancedLayout->addWidget ( htmlCodeThumbnailC, 1, 2 );
+
+    advancedLayout->addWidget ( bbcodeLabel, 2, 0 );
+    advancedLayout->addWidget ( bbcode, 2, 1 );
+    advancedLayout->addWidget ( bbCodeC, 2, 2 );
+
+    advancedLayout->addWidget ( bbcodeThumbnailLabel, 3, 0 );
+    advancedLayout->addWidget ( bbcodeThumbnail, 3, 1 );
+    advancedLayout->addWidget ( bbCodeThumbnailC, 3, 2 );
 
     ui->verticalLayout_2->insertLayout ( 1, advancedLayout, 1 );
 

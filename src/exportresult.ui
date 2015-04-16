@@ -17,24 +17,14 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <layout class="QFormLayout" name="formLayout">
-       <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-       </property>
-       <item row="1" column="0">
-        <widget class="QLabel" name="linkLabel">
-         <property name="text">
-          <string>Link</string>
-         </property>
-         <property name="openExternalLinks">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
+      <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="1">
+        <widget class="QLineEditFocus" name="directLink"/>
+       </item>
+       <item row="0" column="1">
         <widget class="QLineEditFocus" name="link"/>
        </item>
-       <item row="2" column="0">
+       <item row="1" column="0">
         <widget class="QLabel" name="directLinkLabel">
          <property name="text">
           <string>Direct link</string>
@@ -44,8 +34,29 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEditFocus" name="directLink"/>
+       <item row="0" column="0">
+        <widget class="QLabel" name="linkLabel">
+         <property name="text">
+          <string>Link</string>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QToolButton" name="toolButton">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QToolButton" name="toolButton_2">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

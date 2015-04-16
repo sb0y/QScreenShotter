@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QFormLayout>
+#include <QGridLayout>
+#include <QToolButton>
 #include <QPropertyAnimation>
 #include "qplaintexteditfocus.h"
 
@@ -22,8 +24,6 @@ public:
     void makeEasy();
     void makeHard();
 
-    QRect _geometry;
-
 public slots:
     void updateLabels();
     void advancedButton();
@@ -33,7 +33,7 @@ protected:
 private:
     Ui::exportResult *ui;
     QString big, small, userID, base, baseCode;
-    QFormLayout *advancedLayout;
+    QGridLayout *advancedLayout;
 };
 
 #endif // EXPORTRESULT_H
