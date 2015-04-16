@@ -9,12 +9,14 @@ exportResult::exportResult(QWidget *parent) :
     ui->setupUi ( this );
 
     setWindowTitle ( "WEB Export Results" );
+    advancedLayout = NULL;
 }
 
 exportResult::~exportResult()
 {
     delete ui;
     system::getCore()->windows [ "exportResult" ] = NULL;
+    delete advancedLayout;
 }
 
 void exportResult::setResult ( QString big, QString small, QString userID )
@@ -24,21 +26,14 @@ void exportResult::setResult ( QString big, QString small, QString userID )
     this->userID = userID;
 
     base = "http://" + system::getCore()->settings->value ( "WEB/site" ).toString();
-    QString baseCode = base + "/content/screenshots/" + userID + "/";
+    baseCode = base + "/content/screenshots/" + userID + "/";
 
     ui->directLink->setText ( baseCode + big );
     ui->link->setText ( base + "/screenshot/display/" + userID + "/" + big + "/" + small );
 
     QObject::connect ( ui->link, SIGNAL ( textChanged ( const QString& ) ), this, SLOT ( updateLabels() ) );
     QObject::connect ( ui->directLink, SIGNAL ( textChanged ( const QString& ) ), this, SLOT ( updateLabels() ) );
-
-    ui->htmlcodeThumbnail->setPlainText ( QString ( "<a href=\"%0\" title=\"Screenshot from QScreenShotter program\"><img alt=\"Screenshot\" src=\"%1\"></a>" )
-                                          .arg ( baseCode + big ).arg ( baseCode + small ) );
-
-    ui->bbcodeThumbnail->setPlainText ( QString ( "[url=%0][img]%1[/img][/url]" ).arg ( baseCode + big ).arg ( baseCode + small ) );
-
-    ui->bbcode->setPlainText ( QString ( "[img]%0[/img]" ).arg ( ui->directLink->text() ) );
-    ui->htmlcode->setPlainText ( QString ( "<img src=\"%0\" alt=\"Screenshot\" title=\"Screenshot from QScreenShotter program\">" ).arg ( ui->directLink->text() ) );
+    QObject::connect ( ui->advancedButton, SIGNAL ( clicked() ), this, SLOT ( advancedButton() ) );
 
     updateLabels();
 }
@@ -63,4 +58,84 @@ void exportResult::updateLabels()
     } else {
         ui->directLinkLabel->setText ( "Direct Link" );
     }
+}
+
+void exportResult::makeEasy()
+{
+    setSizePolicy ( QSizePolicy::Fixed, QSizePolicy::Preferred );
+
+    QLayoutItem *item = NULL;
+
+    while ( ( item = advancedLayout->itemAt ( 0 ) ) != 0 )
+    {
+        advancedLayout->removeItem ( item );
+        delete item->widget();
+        delete item;
+        item = NULL;
+    }
+
+    ui->verticalLayout_2->removeItem ( advancedLayout );
+
+    delete advancedLayout;
+    advancedLayout = NULL;
+
+    setMinimumHeight ( 0 );
+
+    ui->advancedButton->setText ( "Advanced" );
+}
+
+
+void exportResult::makeHard()
+{
+    setSizePolicy ( QSizePolicy::Fixed, QSizePolicy::Preferred );
+    setFixedHeight ( size().height() );
+
+    QPropertyAnimation *animation = new QPropertyAnimation ( this, "minimumHeight" );
+    animation->setDuration ( 700 );
+    animation->setStartValue ( size().height() );
+    animation->setEndValue ( 500 );
+    animation->start();
+
+    advancedLayout = new QFormLayout;
+
+    QLabel *htmlcodeThumbnailLabel = new QLabel ( "HTML Thumbnail", this );
+    QLabel *htmlcodeLabel = new QLabel ( "HTML", this );
+
+    QLabel *bbcodeThumbnailLabel = new QLabel ( "BB Thumbnail", this );
+    QLabel *bbcodeLabel = new QLabel ( "BB", this );
+
+    QPlainTextEditFocus *htmlcode = new QPlainTextEditFocus ( this );
+    QPlainTextEditFocus *htmlcodeThumbnail = new QPlainTextEditFocus ( this );
+
+    QPlainTextEditFocus *bbcode = new QPlainTextEditFocus ( this );
+
+    QPlainTextEditFocus *bbcodeThumbnail = new QPlainTextEditFocus ( this );
+
+    htmlcodeThumbnail->setPlainText ( QString ( "<a href=\"%0\" title=\"Screenshot from QScreenShotter program\"><img alt=\"Screenshot\" src=\"%1\"></a>" )
+                                          .arg ( baseCode + big ).arg ( baseCode + small ) );
+
+    bbcodeThumbnail->setPlainText ( QString ( "[url=%0][img]%1[/img][/url]" ).arg ( baseCode + big ).arg ( baseCode + small ) );
+
+    bbcode->setPlainText ( QString ( "[img]%0[/img]" ).arg ( ui->directLink->text() ) );
+    htmlcode->setPlainText ( QString ( "<img src=\"%0\" alt=\"Screenshot\" title=\"Screenshot from QScreenShotter program\">" ).arg ( ui->directLink->text() ) );
+
+    advancedLayout->addRow ( htmlcodeLabel, htmlcode );
+    advancedLayout->addRow ( htmlcodeThumbnailLabel, htmlcodeThumbnail );
+    advancedLayout->addRow ( bbcodeLabel, bbcode );
+    advancedLayout->addRow ( bbcodeThumbnailLabel, bbcodeThumbnail );
+
+    ui->verticalLayout_2->insertLayout(1,advancedLayout,1);
+
+    ui->advancedButton->setText ( "Simple" );
+}
+
+void exportResult::advancedButton()
+{
+    if ( NULL == advancedLayout )
+    {
+        makeHard();
+    } else {
+        makeEasy();
+    }
+
 }

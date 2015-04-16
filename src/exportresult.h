@@ -2,6 +2,8 @@
 #define EXPORTRESULT_H
 
 #include <QDialog>
+#include <QFormLayout>
+#include <QPropertyAnimation>
 #include "qplaintexteditfocus.h"
 
 namespace Ui {
@@ -17,15 +19,19 @@ public:
     ~exportResult();
 
     void setResult ( QString big, QString small, QString userID );
+    void makeEasy();
+    void makeHard();
 
 public slots:
     void updateLabels();
+    void advancedButton();
 
 protected:
 
 private:
     Ui::exportResult *ui;
-    QString big, small, userID, base;
+    QString big, small, userID, base, baseCode;
+    QFormLayout *advancedLayout;
 };
 
 #endif // EXPORTRESULT_H

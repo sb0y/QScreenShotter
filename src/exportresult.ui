@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>346</width>
-    <height>407</height>
+    <height>114</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,50 +50,6 @@
       </layout>
      </item>
      <item>
-      <layout class="QFormLayout" name="formLayout_8">
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>HTML</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPlainTextEditFocus" name="htmlcode"/>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>BB </string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QPlainTextEditFocus" name="bbcode"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>BB thumbnail</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPlainTextEditFocus" name="bbcodeThumbnail"/>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>HTML thumbnail</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPlainTextEditFocus" name="htmlcodeThumbnail"/>
-       </item>
-      </layout>
-     </item>
-     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <spacer name="horizontalSpacer">
@@ -115,6 +71,13 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="advancedButton">
+         <property name="text">
+          <string>Advanced</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
     </layout>
@@ -126,11 +89,6 @@
    <class>QLineEditFocus</class>
    <extends>QLineEdit</extends>
    <header>src/qlineeditfocus.h</header>
-  </customwidget>
-  <customwidget>
-   <class>QPlainTextEditFocus</class>
-   <extends>QPlainTextEdit</extends>
-   <header>src/qplaintexteditfocus.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

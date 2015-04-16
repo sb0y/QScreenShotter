@@ -56,4 +56,3 @@ void exportDialog::emergencyShutdown()
         close();
     }
 }
-
