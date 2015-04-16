@@ -1,7 +1,7 @@
 # Make screenshot and share it!
 ###QScreenShotter [![Build Status](https://travis-ci.org/sb0y/QScreenShotter.svg?branch=master)](https://travis-ci.org/sb0y/QScreenShotter)
 
-The program QScreenShotter will help you make comfortably any screenshot on your PC and share the link via IM or social networks.
+The program QScreenShotter will help you comfortably share screenshots via IM or social networks.
 
 You will need to choose from three ways to take a screenshot:
 
