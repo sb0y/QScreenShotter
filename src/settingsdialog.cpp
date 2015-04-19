@@ -26,6 +26,7 @@ settingsDialog::~settingsDialog()
 void settingsDialog::save()
 {
     system::getCore()->settings->setValue ( "WEB/accessToken", ui->lineToken->text() );
+    system::getCore()->settings->sync();
     close();
 }
 
