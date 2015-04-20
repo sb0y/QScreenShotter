@@ -45,16 +45,32 @@
         </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QToolButton" name="toolButton">
+        <widget class="QPushButton" name="pushButton">
+         <property name="toolTip">
+          <string>Copy to Clipboard</string>
+         </property>
          <property name="text">
-          <string>...</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normalon>:/icons/images/clipboard.png</normalon>
+          </iconset>
          </property>
         </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QToolButton" name="toolButton_2">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="toolTip">
+          <string>Copy to Clipboard</string>
+         </property>
          <property name="text">
-          <string>...</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normalon>:/icons/images/clipboard.png</normalon>
+          </iconset>
          </property>
         </widget>
        </item>

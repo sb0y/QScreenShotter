@@ -7,5 +7,6 @@
     </qresource>
     <qresource prefix="/icons">
         <file>images/down.png</file>
+        <file>images/clipboard.png</file>
     </qresource>
 </RCC>
