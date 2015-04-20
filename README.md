@@ -19,7 +19,15 @@ You will need to choose from three ways to take a screenshot:
 
 Click Export button and get your link.
 
-![Export to WEB dialog](http://cs625428.vk.me/v625428253/293ad/2JEZLEg3Oyw.jpg)
+![Export to WEB simple dialog](https://pp.vk.me/c622125/v622125253/2ebe7/Kob0yRsuIDI.jpg)
+
+Extended version
+
+![Export to WEB extended dialog](https://pp.vk.me/c622125/v622125253/2ebe0/IVxOzvwWupU.jpg)
+
+Clipboard import report
+
+![Clipboard import information](https://pp.vk.me/c622125/v622125253/2ebd9/0w0aRXO_aiA.jpg)
 
 Here is preview of the screenshot on the web
 
