@@ -37,7 +37,7 @@ Here is preview of the screenshot on the web
 
 **How to install on Windows?**
 
-Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.6b/QScreenShotterInstall.exe).
+Download and run the [installer](https://github.com/sb0y/QScreenShotter/releases/download/0.7b/QScreenShotterInstall.exe).
 
 **How to compile on Windows?**
 
