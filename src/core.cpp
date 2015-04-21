@@ -40,6 +40,11 @@ core::~core()
     {
         //delete i->second;
         //i->second = NULL;
+        if ( NULL == i->second )
+        {
+            continue;
+        }
+
         i->second->deleteLater();
     }
 
@@ -161,6 +166,11 @@ void core::trayClick ( QSystemTrayIcon::ActivationReason reason )
             for ( std::map<QString,QWidget*>::iterator i = windows.begin();
                   i != windows.end(); ++i )
             {
+                if ( NULL == i->second )
+                {
+                    continue;
+                }
+
                 if ( i->first == "main" )
                 {
                     mw = static_cast < MainWindow* > ( i->second );

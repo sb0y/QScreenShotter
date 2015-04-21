@@ -2,12 +2,13 @@
 #include "ui_settingsdialog.h"
 #include "core.h"
 
-settingsDialog::settingsDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::settingsDialog)
+settingsDialog::settingsDialog ( QWidget *parent ) :
+    QDialog ( parent ),
+    ui ( new Ui::settingsDialog )
 {
     ui->setupUi ( this );
 
+    setAttribute ( Qt::WA_DeleteOnClose );
     setWindowTitle ( QObject::tr ( "Settings" ) );
 
     ui->lineToken->setText ( system::getCore()->settings->value ( "WEB/accessToken" ).toString() );
@@ -19,7 +20,8 @@ settingsDialog::settingsDialog(QWidget *parent) :
 
 settingsDialog::~settingsDialog()
 {
-    system::getCore()->windows [ "settings" ] = NULL;
+    system::getCore()->windows [ "settingsDialog" ] = NULL;
+    deleteLater();
     delete ui;
 }
 
