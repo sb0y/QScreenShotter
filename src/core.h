@@ -79,7 +79,7 @@ public slots:
     void showAbout();
     void exportToWEB();
     void showExportResult ( QString, QString, QString );
-    void openSettingsDialog();
+    void openSettingsDialog ( int tabIndex = -1 );
 
     void trayShotDisplay();
     void trayShotWindow();

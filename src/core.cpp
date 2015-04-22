@@ -291,7 +291,7 @@ void core::exportToWEB()
 
     if ( settings->value ( "WEB/accessToken" ).toString().isEmpty() )
     {
-        openSettingsDialog();
+        openSettingsDialog ( 1 );
         return;
     }
 
@@ -310,9 +310,10 @@ void core::showExportResult ( QString big, QString small, QString userID )
     er->show();
 }
 
-void core::openSettingsDialog()
+void core::openSettingsDialog ( int tabIndex )
 {
     settingsDialog *sd = new settingsDialog ( windows [ "main" ] );
+    sd->activateTab ( tabIndex );
     windows [ "settingsDialog" ] = sd;
     sd->show();
 }

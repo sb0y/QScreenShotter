@@ -17,6 +17,7 @@ public:
     ~settingsDialog();
 
     void processHTML();
+    void activateTab ( int tabIndex );
 
 private:
     Ui::settingsDialog *ui;

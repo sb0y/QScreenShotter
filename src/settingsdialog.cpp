@@ -48,3 +48,9 @@ void settingsDialog::processHTML()
 {
 
 }
+
+void settingsDialog::activateTab ( int tabIndex )
+{
+    if ( tabIndex != -1 )
+        ui->tabWidget->setCurrentIndex ( tabIndex );
+}
