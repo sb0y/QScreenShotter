@@ -14,6 +14,8 @@ settingsDialog::settingsDialog ( QWidget *parent ) :
     ui->lineToken->setText ( system::getCore()->settings->value ( "WEB/accessToken" ).toString() );
     ui->lineSite->setText ( system::getCore()->settings->value ( "WEB/site" ).toString() );
 
+    ui->timeout->setValue ( system::getCore()->settings->value ( "main/timeout" ).toInt() );
+
     QObject::connect ( ui->buttonBox, SIGNAL ( accepted() ), this, SLOT ( save() ) );
     QObject::connect ( ui->commandLinkButton, SIGNAL ( clicked() ), this, SLOT ( goForToken() ) );
 }

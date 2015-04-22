@@ -69,6 +69,7 @@ void core::defaultSettings()
     {
         { "WEB/site", "bagrintsev.me" },
         { "WEB/accessToken", "" },
+        { "main/timeout", "300" },
         { NULL, NULL } // end
     };
 
@@ -91,6 +92,7 @@ int core::exec()
     if ( NULL == sc )
     {
         sc = new screenshot ( this );
+        sc->setTimeout ( settings->value ( "main/timeout" ).toInt() );
     }
 
     #ifdef WIN32

@@ -25,6 +25,7 @@ public:
     int shootWindow();
     int shootDesktop ( bool now = false );
     int shootRectangle();
+    void setTimeout ( int );
 
     grabberBase *wg;
     grabberBase *dg;
@@ -33,6 +34,7 @@ public:
 private:
 
     grabberBase *currentGrabber;
+    int timeout;
 
 signals:
 
