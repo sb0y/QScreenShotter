@@ -7,9 +7,10 @@ Standards-Version: 3.9.6
 Homepage: https://bagrintsev.me
 Vcs-Git: git://github.com/sb0y/QScreenShotter.git
 Vcs-Browser: https://github.com/sb0y/QScreenShotter
+XSBC-Original-Maintainer: Andrey Bagrintsev <andrey@bagrintsev.me>
 
 Package: qscreenshotter
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore5, libqtgui5, libqt5-network, libqt5x11extras5
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5x11extras5
 Description: Screenshot program.
  Screenshot program on Qt5.
