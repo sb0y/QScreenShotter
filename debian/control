@@ -1,0 +1,15 @@
+Source: qscreenshotter
+Section: graphics
+Priority: optional
+Maintainer: Andrey Bagrintsev <andrey@bagrintsev.me>
+Build-Depends: debhelper (>=9), libqt5x11extras5-dev, qt5-qmake, qt5-default
+Standards-Version: 3.9.6
+Homepage: https://bagrintsev.me
+Vcs-Git: git://github.com/sb0y/QScreenShotter.git
+Vcs-Browser: https://github.com/sb0y/QScreenShotter
+
+Package: qscreenshotter
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqtcore5, libqtgui5, libqt5-network, libqt5x11extras5
+Description: Screenshot program.
+ Screenshot program on Qt5.
