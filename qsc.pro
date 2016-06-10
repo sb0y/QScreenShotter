@@ -17,7 +17,7 @@ greaterThan ( QT_MAJOR_VERSION, 4 )
 unix:!mac:DEFINES += HAVE_X11
 QT += core gui network
 
-TARGET = qsc
+TARGET = qscreenshotter
 TEMPLATE = app
 unix:!mac:LIBS += -lX11 # TODO: remove
 unix:!mac:LIBS += -lxcb
