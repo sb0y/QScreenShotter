@@ -1,21 +1,31 @@
+dist: trusty
 language: cpp
-compiler:
-  - gcc
+  
+addons:
+  apt:
+    #sources:
+     #- ubuntu-toolchain-r-test
+     #- ubuntu-trusty
+    packages:
+     - debhelper
+     - pbuilder 
+     - debootstrap 
+     - devscripts
+  
+#before_install:
+#  - sudo add-apt-repository --yes ppa:beineri/opt-qt551-trusty
+#  - sudo apt-get update -qq
 
-before_install:
-- sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-- sudo apt-get update -qq
-- sudo apt-get install ubuntu-sdk qt5-default qttools5-dev-tools qtbase5-dev qtbase5-private-dev libqt5xmlpatterns5 libqt5xmlpatterns5-dev libqt5xml5
-#- wget http://download.qt.io/archive/qt/5.4/5.4.1/single/qt-everywhere-opensource-src-5.4.1.tar.gz -O /tmp/qt.tar.gz
-#- tar -xpf /tmp/qt.tar.gz
-#- cd qt-everywhere-opensource-src-5.4.1 && ./configure -opensource -confirm-license -qt-xcb && make && sudo make install
-#- cd ../..
-- wget http://download.qt.io/archive/qt/5.4/5.4.1/submodules/qtx11extras-opensource-src-5.4.1.tar.gz -O /tmp/qx11extras.tar.gz
-- tar -xvpf /tmp/qx11extras.tar.gz
-- cd qtx11extras-opensource-src-5.4.1 && qmake && make && sudo make install
-- cd ..
+#install:
+#  - sudo apt-get -y install qt55[QTPACKAGE]
 
 script:
-  - qmake -project
-  - qmake qsc.pro
-  - make
+ #- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
+ #- sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100
+ #- source /opt/qt55/bin/qt55-env.sh
+ - sudo wget http://pdebuild.bagrintsev.me/images/xenial-amd64-base.tgz -O /var/cache/pbuilder/base.tgz
+ - sudo mkdir -p /tmp/deb
+ - sudo DIST="xenial" ARCH="amd64" pdebuild --buildresult /tmp/deb
+ - cd /tmp/deb
+ - FILES=""; for f in *; do FILES="$FILES -F \"files[]=@$f\""; done; echo "curl ${FILES} http://pdebuild.bagrintsev.me/scripts/fetchpackets.php" | bash; true
+ #- dpkg-buildpackage -rfakeroot -d
