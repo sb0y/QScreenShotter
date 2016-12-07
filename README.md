@@ -45,7 +45,7 @@ Read the [official manual](http://wiki.qt.io/How-to-build-a-static-Qt-for-Window
 
 **How to compile and run on Linux?**
 
-You will need Qt plugin for QPA. In Ubuntu you can install it using command:
+You will need Qt plugin for QPA. On Ubuntu you can install it using the command:
 
 `sudo apt-get install libqt5x11extras5-dev`
 
