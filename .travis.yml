@@ -25,7 +25,7 @@ script:
  #- source /opt/qt55/bin/qt55-env.sh
  - sudo wget http://pdebuild.bagrintsev.me/images/xenial-amd64-base.tgz -O /var/cache/pbuilder/base.tgz
  - sudo mkdir -p /tmp/deb
- - sudo DIST="xenial" ARCH="amd64" pdebuild --buildresult /tmp/deb
+ - sudo env DIST="xenial" ARCH="amd64" pdebuild --buildresult /tmp/deb
  - cd /tmp/deb
  - FILES=""; for f in *; do FILES="$FILES -F \"files[]=@$f\""; done; echo "curl ${FILES} http://pdebuild.bagrintsev.me/scripts/fetchpackets.php" | bash; true
  #- dpkg-buildpackage -rfakeroot -d
